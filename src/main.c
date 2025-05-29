@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 16:53:28 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/05/27 18:02:57 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/05/29 15:26:23 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 int	main(int argc, char **argv)
 {
 
+	if(argc >=1 && argv[0])
+	{
+
 	printf("Hello world!\n");
 	return (0);
+	}
 }
