@@ -1,0 +1,14 @@
+{
+	"files.associations": {
+		"minirt.h": "c",
+		"libft.h": "c",
+		"math.h": "c"
+	},
+	"makefile.launchConfigurations": [
+		{
+			"cwd": "/home/ewiese-m/Documents/42Luxembourg/common_core/miniRT",
+			"binaryPath": "/home/ewiese-m/Documents/42Luxembourg/common_core/miniRT/miniRT",
+			"binaryArgs": []
+		}
+	]
+}

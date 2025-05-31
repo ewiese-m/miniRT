@@ -6,7 +6,7 @@
 #    By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/27 16:53:28 by ewiese-m          #+#    #+#              #
-#    Updated: 2025/05/29 14:39:06 by ewiese-m         ###   ########.fr        #
+#    Updated: 2025/05/31 16:33:56 by ewiese-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ LIBFT_DIR = libft
 MLX_DIR = minilibx-linux
 
 # Archivos fuente
-SRCS = $(SRC_DIR)/main.c
+SRCS = $(SRC_DIR)/main.c \
+	   $(SRC_DIR)/events.c
 
 # Archivos objeto
 OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
