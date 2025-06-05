@@ -5,77 +5,116 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/27 16:53:28 by ewiese-m          #+#    #+#              #
-#    Updated: 2025/05/31 16:33:56 by ewiese-m         ###   ########.fr        #
+#    Created: 2025/06/04 22:41:26 by ewiese-m          #+#    #+#              #
+#    Updated: 2025/06/04 22:41:34 by ewiese-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Nombre del compilador y flags
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
-INCLUDE = -I./includes -I./libft -I./minilibx-linux
+NAME = miniRT
 
-# Directorios
+# Directories
 SRC_DIR = src
 OBJ_DIR = obj
-INCLUDES_DIR = includes
+INC_DIR = includes
 LIBFT_DIR = libft
 MLX_DIR = minilibx-linux
 
-# Archivos fuente
-SRCS = $(SRC_DIR)/main.c \
-	   $(SRC_DIR)/events.c
+# Source files
+SOURCES = main.c \
+          init/init_scene.c \
+          init/init_mlx.c \
+          init/init_objects.c \
+          parser/parser.c \
+          parser/parse_scene.c \
+          parser/parse_camera.c \
+          parser/parse_lights.c \
+          parser/parse_objects.c \
+          parser/parse_utils.c \
+          raytracing/ray.c \
+          raytracing/camera.c \
+          raytracing/intersections.c \
+          raytracing/lighting.c \
+          raytracing/render.c \
+          objects/sphere.c \
+          objects/plane.c \
+          objects/cylinder.c \
+          objects/object_utils.c \
+          math/vector_operations.c \
+          math/vector_math.c \
+          math/matrix.c \
+          math/math_utils.c \
+          utils/error_handling.c \
+          utils/memory_management.c \
+          utils/string_utils.c \
+          utils/validation.c \
+          graphics/mlx_interface.c \
+          graphics/image.c \
+          graphics/color.c \
+          graphics/window.c
 
-# Archivos objeto
-OBJS = $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+# Bonus sources
+BONUS_SOURCES = bonus/bonus_objects.c \
+                bonus/specular.c \
+                bonus/textures.c \
+                bonus/advanced_lighting.c
 
-# Librerías
-LIBFT = $(LIBFT_DIR)/libft.a
-MLX = $(MLX_DIR)/libmlx.a
+# Object files
+OBJS = $(SOURCES:%.c=$(OBJ_DIR)/%.o)
+BONUS_OBJS = $(BONUS_SOURCES:%.c=$(OBJ_DIR)/%.o)
 
-# Flags de enlazado
+# Compiler and flags
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g
+INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
 LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
 
-# Nombre del programa
-NAME = miniRT
+# Colors for output
+GREEN = \033[0;32m
+RED = \033[0;31m
+BLUE = \033[0;34m
+RESET = \033[0m
 
-# Regla principal
+# Rules
 all: $(NAME)
 
-# Compilar el programa principal
-$(NAME): $(LIBFT) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT_DIR)/libft.a $(MLX_DIR)/libmlx.a
+	@echo "$(BLUE)Linking $(NAME)...$(RESET)"
+	@$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
+	@echo "$(GREEN)$(NAME) created successfully!$(RESET)"
 
-# Compilar archivos objeto
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@mkdir -p $(dir $@)
+	@echo "$(BLUE)Compiling $<...$(RESET)"
+	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-# Crear directorio de objetos
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+$(LIBFT_DIR)/libft.a:
+	@echo "$(BLUE)Building libft...$(RESET)"
+	@make -C $(LIBFT_DIR)
 
-# Compilar libft
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
+$(MLX_DIR)/libmlx.a:
+	@echo "$(BLUE)Building minilibx...$(RESET)"
+	@make -C $(MLX_DIR)
 
-# Compilar minilibx
-$(MLX):
-	$(MAKE) -C $(MLX_DIR)
+bonus: $(OBJS) $(BONUS_OBJS) $(LIBFT_DIR)/libft.a $(MLX_DIR)/libmlx.a
+	@echo "$(BLUE)Linking $(NAME) with bonus...$(RESET)"
+	@$(CC) $(OBJS) $(BONUS_OBJS) $(LDFLAGS) -o $(NAME)
+	@echo "$(GREEN)$(NAME) with bonus created successfully!$(RESET)"
 
-# Limpiar archivos objeto
 clean:
-	rm -rf $(OBJ_DIR)
-	$(MAKE) -C $(LIBFT_DIR) clean
-	$(MAKE) -C $(MLX_DIR) clean
+	@echo "$(RED)Cleaning object files...$(RESET)"
+	@rm -rf $(OBJ_DIR)
+	@make clean -C $(LIBFT_DIR)
+	@make clean -C $(MLX_DIR)
 
-# Limpiar todo
 fclean: clean
-	rm -f $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
-	$(MAKE) -C $(MLX_DIR) clean
+	@echo "$(RED)Cleaning $(NAME)...$(RESET)"
+	@rm -f $(NAME)
+	@make fclean -C $(LIBFT_DIR)
 
-# Recompilar todo
 re: fclean all
 
-# Reglas que no son archivos
-.PHONY: all clean fclean re
+test: $(NAME)
+	@echo "$(BLUE)Running tests...$(RESET)"
+	@./$(NAME) scenes/test_basic.rt
+
+.PHONY: all clean fclean re bonus test
