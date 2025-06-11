@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:00:00 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/05 07:08:33 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/11 15:44:51 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,4 +151,19 @@ char	**ft_split_whitespace(char *str)
 	}
 	result[j] = NULL;
 	return (result);
+}
+
+void	ft_free_split(char **split)
+{
+	int	i;
+
+	if (!split)
+		return ;
+	i = 0;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }

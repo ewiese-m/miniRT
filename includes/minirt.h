@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 22:38:18 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/11 14:27:15 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/11 15:46:07 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "constants.h"
 # include "errors.h"
 # include "structs.h"
+# include <math.h>
 
 /* ************************************************************************** */
 /*                               INIT FUNCTIONS                              */
@@ -31,12 +32,12 @@ void	init_camera(t_camera *camera);
 /* ************************************************************************** */
 t_scene	*parse_scene(char *filename);
 bool	parse_line(t_scene *scene, char *line);
-bool	parse_ambient(t_scene *scene, char *line);
-bool	parse_camera(t_scene *scene, char *line);
-bool	parse_light(t_scene *scene, char *line);
-bool	parse_sphere(t_scene *scene, char *line);
-bool	parse_plane(t_scene *scene, char *line);
-bool	parse_cylinder(t_scene *scene, char *line);
+bool	parse_ambient(t_scene *scene, char **line);
+bool	parse_camera(t_scene *scene, char **line);
+bool	parse_light(t_scene *scene, char **line);
+bool	parse_sphere(t_scene *scene, char **line);
+bool	parse_plane(t_scene *scene, char **line);
+bool	parse_cylinder(t_scene *scene, char **line);
 
 /* ************************************************************************** */
 /*                             PARSING UTILS                                 */
@@ -45,6 +46,7 @@ bool	parse_vector(t_vec3 *vec, char *str);
 bool	parse_color(t_color *color, char *str);
 double	ft_atof(const char *str);
 char	**ft_split_whitespace(char *str);
+void	ft_free_split(char **split);
 
 /* ************************************************************************** */
 /*                           VALIDATION FUNCTIONS                            */
