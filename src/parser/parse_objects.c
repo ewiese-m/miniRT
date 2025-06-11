@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:00:00 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/05 07:08:33 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/11 14:26:29 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-bool	parse_sphere(t_scene *scene, char **tokens)
+bool	parse_sphere(t_scene *scene, char *tokens)
 {
 	t_sphere	*sphere;
 	t_object	*object;
@@ -41,7 +41,7 @@ bool	parse_sphere(t_scene *scene, char **tokens)
 	return (true);
 }
 
-bool	parse_plane(t_scene *scene, char **tokens)
+bool	parse_plane(t_scene *scene, char *tokens)
 {
 	t_plane		*plane;
 	t_object	*object;
@@ -81,7 +81,7 @@ static bool	validate_cylinder_params(t_cylinder *cylinder)
 	return (true);
 }
 
-bool	parse_cylinder(t_scene *scene, char **tokens)
+bool	parse_cylinder(t_scene *scene, char *tokens)
 {
 	t_cylinder	*cylinder;
 	t_object	*object;

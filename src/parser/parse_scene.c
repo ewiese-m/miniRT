@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/05 10:00:00 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/05 07:08:33 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/11 14:26:45 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minirt.h"
 
-bool	parse_ambient(t_scene *scene, char **tokens)
+bool	parse_ambient(t_scene *scene, char *tokens)
 {
 	if (scene->has_ambient)
 		return (error_message(MSG_DUPLICATE_ELEM));
@@ -51,7 +51,7 @@ static void	calculate_camera_vectors(t_camera *camera)
 	camera->up = vec3_normalize(vec3_cross(camera->forward, camera->right));
 }
 
-bool	parse_camera(t_scene *scene, char **tokens)
+bool	parse_camera(t_scene *scene, char *tokens)
 {
 	if (scene->has_camera)
 		return (error_message(MSG_DUPLICATE_ELEM));
@@ -69,7 +69,7 @@ bool	parse_camera(t_scene *scene, char **tokens)
 	return (true);
 }
 
-bool	parse_light(t_scene *scene, char **tokens)
+bool	parse_light(t_scene *scene, char *tokens)
 {
 	if (scene->has_light)
 		return (error_message(MSG_DUPLICATE_ELEM));
