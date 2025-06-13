@@ -1,98 +1,70 @@
-NAME	= 	libft.a
-SRC		= 	ft_atoi.c \
-			ft_atoll.c \
-			ft_bzero.c \
-			ft_isalnum.c \
-			ft_isalpha.c \
-			ft_isascii.c \
-			ft_isdigit.c \
-			ft_isprint.c \
-			ft_isspace.c \
-			ft_memcpy.c \
-			ft_memmove.c \
-			ft_memchr.c \
-			ft_memset.c \
-			ft_memcmp.c \
-			ft_strchr.c \
-			ft_strcmp.c \
-			ft_strcpy.c \
-			ft_strdup.c \
-			ft_strlcat.c \
-			ft_strlcpy.c \
-			ft_strlen.c \
-			ft_strncmp.c \
-			ft_strrchr.c \
-			ft_strjoin.c \
-			ft_strtrim.c \
-			ft_strnstr.c \
-			ft_substr.c \
-			ft_tolower.c \
-			ft_toupper.c \
-			ft_calloc.c \
-			ft_split.c \
-			ft_strcat.c \
-			ft_itoa.c \
-			ft_strmapi.c \
-			ft_striteri.c \
-			ft_putchar_fd.c \
-			ft_putstr_fd.c \
-			ft_putendl_fd.c \
-			ft_putnbr_fd.c \
-			gc_add.c \
-			gc_close_all_fds.c \
-			gc_close_fd.c \
-			gc_free_all.c \
-			gc_free.c \
-			gc_init.c \
-			gc_malloc.c \
-			gc_memory_wrappers.c \
-			gc_remove.c \
-			gc_track_fd.c \
-			get_next_line.c \
-			get_next_line_utils.c
+NAME = libft.a
 
-BONUS	=	ft_lstnew.c \
-			ft_lstadd_front.c \
-			ft_lstsize.c \
-			ft_lstlast.c \
-			ft_lstadd_back.c \
-			ft_lstdelone.c \
-			ft_lstclear.c \
-			ft_lstiter.c \
-			ft_lstmap.c
+CC = gcc
 
-OBJ 	=	$(SRC:.c=.o)
+CFLAGS = -Wall -Wextra -Werror
 
-OBJS 	=	${OBJ} ${BONUS:.c=.o}
+AR = ar rc
 
-HEAD 	=	libft.h
+ARX = ar x
 
-AR 		= 	ar -rcs
+RM = rm -f
 
-GCC 	= 	gcc
+RANLIB = ranlib
 
-FLAGS 	= 	-Wall -Werror -Wextra
+FT_LIB_DIR = ft_lib/
 
+FT_LIB = $(FT_LIB_DIR)ft_lib.a
 
-all: ${NAME}
+PRINTF_DIR = ft_printf/
 
-$(NAME): ${OBJ}
-	${AR} ${NAME} ${OBJ}
+PRINTF = $(PRINTF_DIR)ft_printf.a
 
-.c.o:
-	${GCC} ${FLAGS} -I ./ -c $< -o ${<:.c=.o}
+GNL_DIR = get_next_line/
 
-bonus: ${OBJS}
-	${AR} ${NAME} ${OBJS}
+GNL = $(GNL_DIR)gnl.a
+
+all: $(NAME)
+
+$(FT_LIB):
+	@echo "\n\n\033[0;34mCompiling ft_lib..."
+	@make -C $(FT_LIB_DIR) --no-print-directory
+
+$(PRINTF):
+	@echo "\033[0;34mCompiling ft_printf..."
+	@make -C $(PRINTF_DIR) --no-print-directory
+
+$(GNL):
+	@echo "\033[0;34mCompiling get_next_line..."
+	@make -C $(GNL_DIR) --no-print-directory
+
+$(NAME): $(FT_LIB) $(PRINTF) $(GNL)
+	@echo "\033[0;34mCompiling libft..."
+	@$(ARX) $(FT_LIB)
+	@$(ARX) $(PRINTF)
+	@$(ARX) $(GNL)
+	@$(AR) $(NAME) *.o
+	@$(RANLIB) $(NAME)
+	@$(RM) *.o
+	@$(RM) ft_lib.a
+	@echo "\n\033[0;32mCompiled libft!\033[0m"
 
 clean:
-	rm -f ${OBJS}
-
-
+	@make clean -C $(FT_LIB_DIR) --no-print-directory
+	@make clean -C $(PRINTF_DIR) --no-print-directory
+	@make clean -C $(GNL_DIR) --no-print-directory
 
 fclean: clean
-	rm -f ${NAME}
+	@echo "\033[0;31mCleaning ft_lib..."
+	@make fclean -C $(FT_LIB_DIR) --no-print-directory
+	@echo "\033[0;31mCleaning ft_printf..."
+	@make fclean -C $(PRINTF_DIR) --no-print-directory
+	@echo "\033[0;31mCleaning get_next_line..."
+	@make fclean -C $(GNL_DIR) --no-print-directory
+	@$(RM) $(NAME)
+	@echo "Done !"
+	@echo "\033[0m"
 
 re: fclean all
 
-.PHONY: clean fclean re all
+.PHONY: all clean fclean re

@@ -5,116 +5,153 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/04 22:41:26 by ewiese-m          #+#    #+#              #
-#    Updated: 2025/06/04 22:41:34 by ewiese-m         ###   ########.fr        #
+#    Created: 2022/05/09 14:54:39 by ewiese-m          #+#    #+#              #
+#    Updated: 2025/06/13 21:08:18 by ewiese-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = miniRT
+NAME		:= miniRT
 
-# Directories
-SRC_DIR = src
-OBJ_DIR = obj
-INC_DIR = includes
-LIBFT_DIR = libft
-MLX_DIR = minilibx-linux
+SRC_DIR		:= srcs
 
-# Source files
-SOURCES = main.c \
-          init/init_scene.c \
-          init/init_mlx.c \
-          init/init_objects.c \
-          parser/parser.c \
-          parser/parse_scene.c \
-          parser/parse_camera.c \
-          parser/parse_lights.c \
-          parser/parse_objects.c \
-          parser/parse_utils.c \
-          raytracing/ray.c \
-          raytracing/camera.c \
-          raytracing/intersections.c \
-          raytracing/lighting.c \
-          raytracing/render.c \
-          objects/sphere.c \
-          objects/plane.c \
-          objects/cylinder.c \
-          objects/object_utils.c \
-          math/vector_operations.c \
-          math/vector_math.c \
-          math/matrix.c \
-          math/math_utils.c \
-          utils/error_handling.c \
-          utils/memory_management.c \
-          utils/string_utils.c \
-          utils/validation.c \
-          graphics/mlx_interface.c \
-          graphics/image.c \
-          graphics/color.c \
-          graphics/window.c
+SRCS := \
+			main.c \
+			args/args_check.c \
+			color/color_new.c \
+			color/color_operations.c \
+			data/data_free.c \
+			data/data_initialize.c \
+			double/double_comparaisons.c \
+			events/event_key.c \
+			events/event_resize.c \
+			file/file_check.c \
+			matrix/matrix_cofactor.c \
+			matrix/matrix_comparaisons.c \
+			matrix/matrix_create.c \
+			matrix/matrix_determinant.c \
+			matrix/matrix_inverse.c \
+			matrix/matrix_minor.c \
+			matrix/matrix_operations.c \
+			matrix/matrix_rotation.c \
+			matrix/matrix_scale.c \
+			matrix/matrix_submatrix.c \
+			matrix/matrix_translation.c \
+			matrix/matrix_transpose.c \
+			matrix/matrix_transform.c \
+			matrix/matrix_skew_sym.c \
+			mlx/mlx_exit.c \
+			mlx/mlx_initialize.c \
+			mlx/mlx_loop.c \
+			mlx/mlx_render.c \
+			mlx/mlx_pixel_put.c \
+			inits/material_init.c \
+			inits/camera_init.c \
+			inits/minirt_init.c \
+			parsing/parse_camera.c \
+			parsing/parse_hittable.c \
+			parsing/parse_lighting.c \
+			parsing/parse_subcomponents.c \
+			parsing/parse_transforms.c \
+			parsing/parsing.c \
+			free/parsing_free.c \
+			free/scene_free.c \
+			ray/ray_create.c \
+			ray/ray_position.c \
+			ray/ray_transform.c \
+			tuple/tuple_functions.c \
+			tuple/tuple_new.c \
+			tuple/tuple_operations.c \
+			tuple/tuple_transform.c \
+			utils/ft_exit.c \
+			render/render_scene.c \
+			render/lighting.c \
+			intersections/cylinder_intersection.c \
+			intersections/sphere_intersection.c \
+			intersections/plane_intersection.c \
+			intersections/intersect.c \
+			intersections/hit.c \
+			normal/normal_at.c \
+			normal/reflect.c \
 
-# Bonus sources
-BONUS_SOURCES = bonus/bonus_objects.c \
-                bonus/specular.c \
-                bonus/textures.c \
-                bonus/advanced_lighting.c
 
-# Object files
-OBJS = $(SOURCES:%.c=$(OBJ_DIR)/%.o)
-BONUS_OBJS = $(BONUS_SOURCES:%.c=$(OBJ_DIR)/%.o)
+SRCS := ${SRCS:%=${SRC_DIR}/%}
 
-# Compiler and flags
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
-INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR)
-LDFLAGS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lX11 -lXext -lm
+OBJ_DIR	:= .objs
+OBJS	:= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
-# Colors for output
-GREEN = \033[0;32m
-RED = \033[0;31m
-BLUE = \033[0;34m
-RESET = \033[0m
+INCL_DIR	:= includes
+MAIN_HEADER	:= ${INCL_DIR}/miniRT.h
 
-# Rules
-all: $(NAME)
+INCL_FLAGS	:= -I${INCL_DIR}
 
-$(NAME): $(OBJS) $(LIBFT_DIR)/libft.a $(MLX_DIR)/libmlx.a
-	@echo "$(BLUE)Linking $(NAME)...$(RESET)"
-	@$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
-	@echo "$(GREEN)$(NAME) created successfully!$(RESET)"
+MLX_DIR	:= minilibx-linux
+MLX 		:= $(MLX_DIR)/libmlx.a
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(dir $@)
-	@echo "$(BLUE)Compiling $<...$(RESET)"
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+LIBFT_DIR	:= libft
+LIBFT		:= $(LIBFT_DIR)/libft.a
 
-$(LIBFT_DIR)/libft.a:
-	@echo "$(BLUE)Building libft...$(RESET)"
-	@make -C $(LIBFT_DIR)
+LDFLAGS	:= -L./libft/
+LDLIBS	:= -lft
 
-$(MLX_DIR)/libmlx.a:
-	@echo "$(BLUE)Building minilibx...$(RESET)"
-	@make -C $(MLX_DIR)
+LIB_FLAGS	:= $(LDFLAGS) $(LDLIBS) -lm
 
-bonus: $(OBJS) $(BONUS_OBJS) $(LIBFT_DIR)/libft.a $(MLX_DIR)/libmlx.a
-	@echo "$(BLUE)Linking $(NAME) with bonus...$(RESET)"
-	@$(CC) $(OBJS) $(BONUS_OBJS) $(LDFLAGS) -o $(NAME)
-	@echo "$(GREEN)$(NAME) with bonus created successfully!$(RESET)"
+OS_NAME := $(shell uname -s | tr A-Z a-z)
+
+CC			:= gcc
+CFLAGS		:= -Wall -Wextra -Werror
+
+
+ifeq ($(OS_NAME),linux)
+	MLX_LINK	:= -L$(MLX_DIR) -lmlx -lX11 -lXext
+	MLX_INCL	:= -I$(MLX_DIR)
+endif
+ifeq ($(OS_NAME),darwin)
+	MLX_LINK	:= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -L/usr/X11/lib -lX11 -lXext
+	MLX_INCL	:= -I$(MLX_DIR) -I/usr/X11/include
+	CFLAGS		:= -Wall -Wextra -g
+endif
+
+RM			:= rm -rf
+MAKEFLAGS	+= --no-print-directory
+DIR_DUP		= mkdir -p ${@D}
+
+all: ${NAME}
+
+bonus: ${NAME}
+
+${LIBFT}:
+	git submodule update --init
+	${MAKE} all -C ${LIBFT_DIR}
+
+${MLX}:
+	git submodule update --init
+	${MAKE} all -C ${MLX_DIR}
+
+${NAME}: ${MLX} ${LIBFT} ${OBJS}
+	${CC} ${OBJS} ${MLX_LINK} ${LIB_FLAGS} -o ${NAME}
+	${info EXECUTABLE CREATED: ${NAME}}
+
+
+${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
+	${DIR_DUP}
+	${CC} ${CFLAGS} ${MLX_INCL} $(INCL_FLAGS) -c -o $@ $<
+	${info OBJECT CREATED: $@}
+
 
 clean:
-	@echo "$(RED)Cleaning object files...$(RESET)"
-	@rm -rf $(OBJ_DIR)
-	@make clean -C $(LIBFT_DIR)
-	@make clean -C $(MLX_DIR)
+	${RM} ${OBJS}
+	make clean -C ${LIBFT_DIR}
+	make clean -C ${MLX_DIR}
+	${info REMOVED OBJECTS: ${OBJS}}
 
 fclean: clean
-	@echo "$(RED)Cleaning $(NAME)...$(RESET)"
-	@rm -f $(NAME)
-	@make fclean -C $(LIBFT_DIR)
+	${RM} ${NAME} ${OBJ_DIR}
+	make fclean -C ${LIBFT_DIR}
+	${info REMOVED EXECUTABLES: ${NAME}}
 
-re: fclean all
+re:
+	${MAKE} fclean
+	${MAKE} all
 
-test: $(NAME)
-	@echo "$(BLUE)Running tests...$(RESET)"
-	@./$(NAME) scenes/test_basic.rt
-
-.PHONY: all clean fclean re bonus test
+.PHONY: clean fclean re all bonus
+.SILENT: ${NAME} ${SRCS} ${OBJS} ${LIBFT} all clean fclean re bonus
