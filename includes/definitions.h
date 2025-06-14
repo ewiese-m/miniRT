@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   miniRT_define.h                                    :+:      :+:    :+:   */
+/*   definitions.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:40:18 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 02:35:44 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:36:41 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINIRT_DEFINE_H
-# define MINIRT_DEFINE_H
+#ifndef DEFINITIONS_H
+# define DEFINITIONS_H
 
 # define EPSILON 0.00001
 # define WIDHT 250
@@ -21,21 +21,21 @@
 # define PLANE 2
 # define CYLINDER 3
 
-# define ERROR_MALLOC "Malloc error"
-# define ERROR_NOT_ENOUGH_ARGS "Not enough arguments"
-# define ERROR_WRONG_ARGS_NB "Wrong number of arguments"
-# define ERROR_PARSING_ROTATION "Error while parsing rotation"
-# define ERROR_PARSING_CENTER "Error while parsing center"
-# define ERROR_PARSING_COLOR "Error while parsing color"
-# define ERROR_PARSING_PLANE "Could not parse plane, aborting"
-# define ERROR_PARSING_SPHERE "Could not parse sphere, aborting"
-# define ERROR_PARSING_CYLINDER "Could not parse cylinder, aborting"
-# define ERROR_PARSING_LIGHT "Could not parse light, aborting"
-# define ERROR_PARSING_AMBIENT "Could not parse ambient, aborting"
-# define ERROR_PARSING_CAMERA "Could not parse camera, aborting"
-# define ERROR_PARSING_POINT "Could not parse point, aborting"
-# define ERROR_PARSING_VECTOR "Could not parse vector, aborting"
-# define ERROR_ORIENTATION_NORMALIZED "Orientation vector not normalized"
+# define E1 "Memory allocation error"
+# define E2 "Not enough arguments"
+# define ERROR_WRONG_ARGS_NB "Wrong args numbers"
+# define ERROR_PARSING_ROTATION "Parsing rotation error!"
+# define ERROR_PARSING_CENTER "Parsing center error!"
+# define ERROR_PARSING_COLOR "Parsing color error!"
+# define ERROR_PARSING_PLANE "Parsing plane error!"
+# define ERROR_PARSING_SPHERE "Parsing sphere error!"
+# define ERROR_PARSING_CYLINDER "Parsing cylinder error!"
+# define ERROR_PARSING_LIGHT "Parsing light error!"
+# define ERROR_PARSING_AMBIENT "Parsing ambient error!"
+# define ERROR_PARSING_CAMERA "Parsing camera error!"
+# define ERROR_PARSING_POINT "Parsing point error!"
+# define ERROR_PARSING_VECTOR "Parsing vector error!"
+# define ERROR_ORIENTATION_NORMALIZED "Orientation error not normalized."
 # define ERROR_CAMERA_ALREADY_DEFINED "Only one camera can be defined"
 # define ERROR_AMBIENT_ALREADY_DEFINED "Only one ambient light can be defined"
 # define ERROR_LIGHT_ALREADY_DEFINED "Only one light can be defined"
