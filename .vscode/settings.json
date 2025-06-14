@@ -2,7 +2,8 @@
 	"files.associations": {
 		"minirt.h": "c",
 		"libft.h": "c",
-		"math.h": "c"
+		"math.h": "c",
+		"minirt_tuple.h": "c"
 	},
 	"makefile.launchConfigurations": [
 		{
