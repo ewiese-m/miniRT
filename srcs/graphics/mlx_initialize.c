@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:40:43 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:24:18 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:39:12 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	mlx_initialize_window(t_renderer *data)
 	data->mlx->win_width = WIDHT;
 	data->mlx->win_height = HEIGHT;
 	data->mlx->mlx_win = mlx_new_window(data->mlx->mlx, data->mlx->win_width,
-			data->mlx->win_height, "miniRT");
+			data->mlx->win_height, "miniRT <--> ewiese-m");
 	if (!data->mlx->mlx_win)
 		mlx_error(data);
 	data->mlx->img = mlx_new_image(data->mlx->mlx,
