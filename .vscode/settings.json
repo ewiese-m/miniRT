@@ -13,7 +13,9 @@
 		"objects.h": "c",
 		"parsing.h": "c",
 		"structs.h": "c",
-		"ft_lib.h": "c"
+		"ft_lib.h": "c",
+		"stdlib.h": "c",
+		"stdbool.h": "c"
 	},
 	"makefile.launchConfigurations": [
 		{

@@ -1,12 +1,12 @@
-.objs/maths/matrices/matrix_compare.o: \
- srcs/maths/matrices/matrix_compare.c minilibx-linux/../includes/miniRT.h \
- minilibx-linux/../includes/./../minilibx-linux/mlx.h \
+.objs/init/init_material.o: srcs/init/init_material.c \
+ minilibx-linux/../includes/miniRT.h \
  minilibx-linux/../includes/./../libft/includes/libft.h \
  minilibx-linux/../includes/./../libft/includes/../ft_lib/includes/ft_lib.h \
  minilibx-linux/../includes/./../libft/includes/../get_next_line/includes/get_next_line.h \
  minilibx-linux/../includes/./../libft/includes/../get_next_line/includes/../../ft_lib/includes/ft_lib.h \
  minilibx-linux/../includes/./../libft/includes/../ft_printf/includes/ft_printf.h \
  minilibx-linux/../includes/./../libft/includes/../ft_printf/includes/../../ft_lib/includes/ft_lib.h \
+ minilibx-linux/../includes/./../minilibx-linux/mlx.h \
  minilibx-linux/../includes/definitions.h \
  minilibx-linux/../includes/structs.h minilibx-linux/../includes/init.h \
  minilibx-linux/../includes/checks.h \
