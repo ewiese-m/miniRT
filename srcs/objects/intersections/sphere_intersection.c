@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 20:04:37 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:38 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:23:32 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 double	*get_intersections(double a, double b, double discriminant)
 {

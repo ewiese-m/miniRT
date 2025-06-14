@@ -12,7 +12,8 @@
 		"memory.h": "c",
 		"objects.h": "c",
 		"parsing.h": "c",
-		"structs.h": "c"
+		"structs.h": "c",
+		"ft_lib.h": "c"
 	},
 	"makefile.launchConfigurations": [
 		{

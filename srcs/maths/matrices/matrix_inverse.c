@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:37:48 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 17:13:36 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:21:43 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 static bool	matrix_invertible(t_matrix m)
 {

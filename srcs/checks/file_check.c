@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:24:41 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:57:36 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:16:05 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 void	file_check_path(char *path)
 {

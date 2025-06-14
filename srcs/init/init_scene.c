@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 07:46:43 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 17:11:01 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:24:18 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 void	init_scene(t_scene *scene)
 {

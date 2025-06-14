@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:21:14 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 03:03:41 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:15:37 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 bool	is_shadowed(t_scene *scene, t_point point)
 {
@@ -27,10 +27,10 @@ bool	is_shadowed(t_scene *scene, t_point point)
 	hit = ft_hit(intersections);
 	if (hit != NULL && hit->t < tuple_mag(v))
 	{
-		ft_lstclear(&intersections, free_intersection);
+		ft_lstclear(&intersections, intersec_free);
 		return (true);
 	}
-	ft_lstclear(&intersections, free_intersection);
+	ft_lstclear(&intersections, intersec_free);
 	return (false);
 }
 

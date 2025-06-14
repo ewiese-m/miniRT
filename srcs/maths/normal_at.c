@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 19:24:12 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:27:45 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:22:59 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 static t_vector	object_normal_at(t_object *obj, t_tuple object_point)
 {

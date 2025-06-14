@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 21:29:51 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:45 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:24:18 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 void	calculate_rotations(t_vector vector, double *x_angle, double *z_angle)
 {

@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:09:03 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 03:03:16 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:04:02 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 void	free_light(void *light)
 {

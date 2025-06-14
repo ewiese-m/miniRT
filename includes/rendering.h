@@ -23,5 +23,6 @@ int		color_to_int(t_color color);
 
 t_color	lighting(t_shading_data *lighting_info, bool shadowed);
 bool	is_shadowed(t_scene *scene, t_point point);
+void	render_scene(t_renderer *data);
 
 #endif

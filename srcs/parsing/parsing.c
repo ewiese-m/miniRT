@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 07:17:07 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:29:57 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:24:18 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 static int	ft_parse_line(t_scene *scene, char *line)
 {

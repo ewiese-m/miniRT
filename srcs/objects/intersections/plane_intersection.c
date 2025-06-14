@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 15:59:09 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 00:26:43 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:23:32 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 double	*intersect_with_plane(t_ray ray)
 {

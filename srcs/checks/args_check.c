@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 16:14:01 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 16:07:51 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:04:08 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 int	args_check(int argc, char **argv, char **envp)
 {

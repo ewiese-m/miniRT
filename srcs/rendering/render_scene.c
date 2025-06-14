@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 15:08:57 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:03:07 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:15:37 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 t_ray	get_ray(t_scene *scene, int x, int y)
 {
@@ -72,12 +72,12 @@ int	ray_color(t_renderer *data, t_ray ray)
 		comps = prepare_computations(intersection, ray);
 		comps.light = data->scene->lights->content;
 		comps.scene = data->scene;
-		ft_lstclear(&intersections, free_intersection);
+		ft_lstclear(&intersections, intersec_free);
 		color = lighting(&comps, is_shadowed(data->scene, comps.over_point));
 		result = color_to_int(color);
 	}
 	if (intersections)
-		ft_lstclear(&intersections, free_intersection);
+		ft_lstclear(&intersections, intersec_free);
 	return (result);
 }
 

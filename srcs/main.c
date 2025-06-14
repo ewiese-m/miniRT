@@ -6,18 +6,18 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 18:30:53 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:02:29 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:12:13 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_renderer	minirt;
 
 	args_check(argc, argv, envp);
-	data_initialize(&minirt);
+	init_data(&minirt);
 	if (!init_minirt(&minirt))
 		return (data_free(&minirt), 0);
 	if (!ft_parse_rt_file(minirt.scene, argv[1]))

@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 22:01:44 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:57:36 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:31:36 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 void	ft_get_pixel_size(t_camera *camera)
 {
@@ -107,7 +107,7 @@ int	ft_parse_camera(t_scene *scene, char *line)
 
 	if (scene->camera)
 		return (ft_error(ERROR_CAMERA_ALREADY_DEFINED), 0);
-	camera = camera_init();
+	camera = init_camera();
 	if (!camera)
 		return (free_parse_camera(camera, NULL), 0);
 	tab = ft_split(line, ' ');

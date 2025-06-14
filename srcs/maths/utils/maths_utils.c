@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 13:48:38 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:21:28 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:20:09 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 bool	double_equal(double nb1, double nb2)
 {

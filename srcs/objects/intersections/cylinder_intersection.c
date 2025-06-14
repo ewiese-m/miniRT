@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 21:13:33 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 03:02:00 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:23:32 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 double	*intersect_with_cylinder(t_object *cy, t_ray ray, double c, double d)
 {

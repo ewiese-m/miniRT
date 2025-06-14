@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:38:26 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:14:36 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:07:52 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "ft_lib.h"
 
 void	ft_exit(char *msg, int status)
 {

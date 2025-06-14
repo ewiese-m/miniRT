@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 16:12:49 by ewiese-men        #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:04 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:07:20 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int		ft_putstr(char *s);
 int		ft_putchar(char c);
 
 int		ft_error(char *str);
+void	ft_exit(char *msg, int status);
 
 char	**ft_split(char const *s, char c);
 int		ft_count_words(char const *s, char c);

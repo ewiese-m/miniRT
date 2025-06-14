@@ -6,152 +6,141 @@
 #    By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 14:54:39 by ewiese-m          #+#    #+#              #
-#    Updated: 2025/06/14 15:32:01 by ewiese-m         ###   ########.fr        #
+#    Updated: 2025/06/14 23:01:59 by ewiese-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# ===== PROGRAM NAME =====
 NAME		:= miniRT
 
+# ===== DIRECTORIES =====
 SRC_DIR		:= srcs
-
-SRCS := \
-    main.c \
-    core/data_initialize.c \
-    core/data_free.c \
-    core/minirt_init.c \
-    math/vectors/tuple_new.c \
-    math/vectors/tuple_operations.c \
-    math/vectors/tuple_functions.c \
-    math/vectors/tuple_transform.c \
-    math/matrices/matrix_create.c \
-    math/matrices/matrix_operations.c \
-    math/matrices/matrix_determinant.c \
-    math/matrices/matrix_inverse.c \
-    math/matrices/matrix_transpose.c \
-    math/matrices/matrix_cofactor.c \
-    math/matrices/matrix_minor.c \
-    math/matrices/matrix_submatrix.c \
-    math/matrices/matrix_comparaisons.c \
-    math/matrices/matrix_transform.c \
-    math/matrices/matrix_rotation.c \
-    math/matrices/matrix_translation.c \
-    math/matrices/matrix_scale.c \
-    math/matrices/matrix_skew_sym.c \
-    math/rays/ray_create.c \
-    math/rays/ray_position.c \
-    math/rays/ray_transform.c \
-    math/utils/double_comparaisons.c \
-    input/args_check.c \
-    input/file_check.c \
-    parsing/parsing.c \
-    parsing/parse_camera.c \
-    parsing/parse_hittable.c \
-    parsing/parse_lighting.c \
-    parsing/parse_subcomponents.c \
-    parsing/parse_transforms.c \
-    objects/intersections/sphere_intersection.c \
-    objects/intersections/plane_intersection.c \
-    objects/intersections/cylinder_intersection.c \
-    objects/intersections/intersect.c \
-    objects/intersections/hit.c \
-    objects/normals/normal_at.c \
-    objects/normals/reflect.c \
-    rendering/render_scene.c \
-    rendering/lighting.c \
-    rendering/color/color_new.c \
-    rendering/color/color_operations.c \
-    camera/init_camera.c \
-    camera/init_material.c \
-    graphics/mlx_initialize.c \
-    graphics/mlx_render.c \
-    graphics/mlx_pixel_put.c \
-    graphics/mlx_loop.c \
-    graphics/mlx_exit.c \
-    graphics/events/event_key.c \
-    graphics/events/event_resize.c \
-    memory/parsing_free.c \
-    memory/scene_free.c \
-    utils/ft_exit.c \
-
-
-SRCS := ${SRCS:%=${SRC_DIR}/%}
-
-OBJ_DIR	:= .objs
-OBJS	:= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
-
+OBJ_DIR		:= .objs
 INCL_DIR	:= includes
-MAIN_HEADER	:= ${INCL_DIR}/miniRT.h
 
-INCL_FLAGS	:= -I${INCL_DIR}
-
-MLX_DIR	:= minilibx-linux
-MLX 		:= $(MLX_DIR)/libmlx.a
-
+# ===== LIBRARY DIRECTORIES =====
 LIBFT_DIR	:= libft
-LIBFT		:= $(LIBFT_DIR)/libft.a
+MLX_DIR		:= minilibx-linux
 
-LDFLAGS	:= -L./libft/
-LDLIBS	:= -lft
+# ===== SOURCE FILES =====
+# Automatically find all .c files in srcs directory
+SRCS		:= $(shell find ${SRC_DIR} -name "*.c" -type f)
 
-LIB_FLAGS	:= $(LDFLAGS) $(LDLIBS) -lm
+# ===== OBJECT FILES =====
+OBJS		:= ${SRCS:${SRC_DIR}/%.c=${OBJ_DIR}/%.o}
 
-OS_NAME := $(shell uname -s | tr A-Z a-z)
+# ===== HEADER FILES =====
+# Automatically find all .h files in includes directory
+HEADERS		:= $(shell find ${INCL_DIR} -name "*.h" -type f 2>/dev/null)
 
-CC			:= gcc
-CFLAGS		:= -Wall -Wextra -Werror
+# ===== LIBRARIES =====
+LIBFT		:= ${LIBFT_DIR}/libft.a
+MLX_LIB		:= ${MLX_DIR}/libmlx.a
 
+# ===== COMPILER AND FLAGS =====
+CC			:= cc
+CFLAGS		:= -Wall -Wextra -Werror -g
+DFLAGS		:= -MMD -MF $(@:.o=.d)
 
-ifeq ($(OS_NAME),linux)
-	MLX_LINK	:= -L$(MLX_DIR) -lmlx -lX11 -lXext
-	MLX_INCL	:= -I$(MLX_DIR)
+# ===== INCLUDE PATHS =====
+IFLAGS		:= -I${INCL_DIR} \
+			   -I${LIBFT_DIR}/includes \
+			   -I${MLX_DIR}
+
+# ===== SYSTEM DETECTION =====
+UNAME		:= $(shell uname)
+
+# ===== LINKING FLAGS =====
+ifeq ($(UNAME), Darwin)
+	# macOS
+	LFLAGS	:= -L${MLX_DIR} -lmlx -framework OpenGL -framework AppKit
+else ifeq ($(UNAME), FreeBSD)
+	# FreeBSD
+	LFLAGS	:= -L${MLX_DIR} -lmlx -lXext -lX11 -lm -lbsd
+else
+	# Linux and others
+	LFLAGS	:= -L${MLX_DIR} -lmlx -lXext -lX11 -lm -lbsd
 endif
-ifeq ($(OS_NAME),darwin)
-	MLX_LINK	:= -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit -L/usr/X11/lib -lX11 -lXext
-	MLX_INCL	:= -I$(MLX_DIR) -I/usr/X11/include
-	CFLAGS		:= -Wall -Wextra -g
-endif
 
-RM			:= rm -rf
-MAKEFLAGS	+= --no-print-directory
-DIR_DUP		= mkdir -p ${@D}
+# ===== COLORS =====
+RED			:= \033[0;31m
+GREEN		:= \033[0;32m
+YELLOW		:= \033[0;33m
+BLUE		:= \033[0;34m
+PURPLE		:= \033[0;35m
+CYAN		:= \033[0;36m
+WHITE		:= \033[0;37m
+RESET		:= \033[0m
 
+# ===== MAIN TARGETS =====
 all: ${NAME}
 
-bonus: ${NAME}
+${NAME}: ${LIBFT} ${MLX_LIB} ${OBJS}
+	@echo "${CYAN}Linking ${NAME}...${RESET}"
+	@${CC} ${OBJS} ${LIBFT} ${LFLAGS} -o ${NAME}
+	@echo "${GREEN}✅ ${NAME} compiled successfully!${RESET}"
 
+# ===== OBJECT COMPILATION =====
+${OBJ_DIR}/%.o: ${SRC_DIR}/%.c ${HEADERS} | ${OBJ_DIR}
+	@mkdir -p ${@D}
+	@printf "${YELLOW}Compiling: %-50s${RESET}\r" ${<F}
+	@${CC} ${CFLAGS} ${DFLAGS} ${IFLAGS} -c $< -o $@
+
+# ===== DIRECTORY CREATION =====
+${OBJ_DIR}:
+	@mkdir -p ${OBJ_DIR}
+
+# ===== LIBRARY COMPILATION =====
 ${LIBFT}:
-	git submodule update --init
-	${MAKE} all -C ${LIBFT_DIR}
+	@echo "${PURPLE}Building libft...${RESET}"
+	@${MAKE} -C ${LIBFT_DIR} --no-print-directory
 
-${MLX}:
-	git submodule update --init
-	${MAKE} all -C ${MLX_DIR}
+${MLX_LIB}:
+	@echo "${PURPLE}Building minilibx...${RESET}"
+	@${MAKE} -C ${MLX_DIR} --no-print-directory
 
-${NAME}: ${MLX} ${LIBFT} ${OBJS}
-	${CC} ${OBJS} ${MLX_LINK} ${LIB_FLAGS} -o ${NAME}
-	${info EXECUTABLE CREATED: ${NAME}}
-
-
-${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
-	${DIR_DUP}
-	${CC} ${CFLAGS} ${MLX_INCL} $(INCL_FLAGS) -c -o $@ $<
-	${info OBJECT CREATED: $@}
-
-
+# ===== CLEANUP TARGETS =====
 clean:
-	${RM} ${OBJS}
-	make clean -C ${LIBFT_DIR}
-	make clean -C ${MLX_DIR}
-	${info REMOVED OBJECTS: ${OBJS}}
+	@echo "${RED}Cleaning object files...${RESET}"
+	@${MAKE} -C ${LIBFT_DIR} clean --no-print-directory
+	@${MAKE} -C ${MLX_DIR} clean --no-print-directory
+	@rm -rf ${OBJ_DIR}
 
 fclean: clean
-	${RM} ${NAME} ${OBJ_DIR}
-	make fclean -C ${LIBFT_DIR}
-	${info REMOVED EXECUTABLES: ${NAME}}
+	@echo "${RED}Full clean...${RESET}"
+	@${MAKE} -C ${LIBFT_DIR} fclean --no-print-directory
+	@rm -f ${NAME}
 
-re:
-	${MAKE} fclean
-	${MAKE} all
+re: fclean all
 
-.PHONY: clean fclean re all bonus
-.SILENT: ${NAME} ${SRCS} ${OBJS} ${LIBFT} all clean fclean re bonus
+# ===== UTILITY TARGETS =====
+norm:
+	@echo "${BLUE}Running norminette...${RESET}"
+	@norminette ${SRC_DIR} ${INCL_DIR}
+
+debug: CFLAGS += -DDEBUG -fsanitize=address
+debug: ${NAME}
+
+show:
+	@echo "${CYAN}=== PROJECT CONFIGURATION ===${RESET}"
+	@echo "${YELLOW}NAME:${RESET}      ${NAME}"
+	@echo "${YELLOW}CC:${RESET}        ${CC}"
+	@echo "${YELLOW}CFLAGS:${RESET}    ${CFLAGS}"
+	@echo "${YELLOW}IFLAGS:${RESET}    ${IFLAGS}"
+	@echo "${YELLOW}LFLAGS:${RESET}    ${LFLAGS}"
+	@echo "${YELLOW}UNAME:${RESET}     ${UNAME}"
+	@echo "${YELLOW}SRCS:${RESET}      ${words ${SRCS}} files"
+	@echo "${YELLOW}OBJS:${RESET}      ${words ${OBJS}} files"
+	@echo "${YELLOW}HEADERS:${RESET}   ${words ${HEADERS}} files"
+	@echo ""
+	@echo "${BLUE}=== SOURCE FILES ===${RESET}"
+	@echo "${SRCS}" | tr ' ' '\n' | sort
+	@echo ""
+	@echo "${BLUE}=== HEADER FILES ===${RESET}"
+	@echo "${HEADERS}" | tr ' ' '\n' | sort
+
+# ===== DEPENDENCY MANAGEMENT =====
+-include ${OBJS:.o=.d}
+
+# ===== PHONY TARGETS =====
+.PHONY: all clean fclean re norm debug show

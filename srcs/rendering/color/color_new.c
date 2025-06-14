@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:18:19 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 03:02:53 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:03:41 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 t_color	color_new(double r, double g, double b)
 {

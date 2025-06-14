@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:24:11 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:38 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:22:40 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 t_tuple	tuple_transform(t_tuple tuple, t_matrix matrix)
 {

@@ -6,11 +6,11 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 19:51:55 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:01:40 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:31:48 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#include "../includes/miniRT.h"
 
 t_object	*ft_init_hittable(int id)
 {
@@ -26,7 +26,7 @@ t_object	*ft_init_hittable(int id)
 		free_hittable(hittable);
 		return (ft_error(ERROR_MALLOC), NULL);
 	}
-	hittable->material = material_init();
+	hittable->material = init_material();
 	if (!hittable->material)
 	{
 		free_hittable(hittable);
