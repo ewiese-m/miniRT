@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:37:39 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 03:06:19 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:07:18 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	mlx_exit(t_renderer *data, int status)
 void	mlx_error(t_renderer *data)
 {
 	mlx_free(data);
-	ft_exit("Error: Something went wrong with MiniLibX\n", 1);
+	ft_exit("error of minilibx\n", 1);
 }
 
 int	mlx_hook_exit(t_renderer *data)

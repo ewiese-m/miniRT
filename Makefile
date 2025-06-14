@@ -6,7 +6,7 @@
 #    By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/09 14:54:39 by ewiese-m          #+#    #+#              #
-#    Updated: 2025/06/14 00:17:36 by ewiese-m         ###   ########.fr        #
+#    Updated: 2025/06/14 15:32:01 by ewiese-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,8 +60,8 @@ SRCS := \
     rendering/lighting.c \
     rendering/color/color_new.c \
     rendering/color/color_operations.c \
-    camera/camera_init.c \
-    camera/material_init.c \
+    camera/init_camera.c \
+    camera/init_material.c \
     graphics/mlx_initialize.c \
     graphics/mlx_render.c \
     graphics/mlx_pixel_put.c \

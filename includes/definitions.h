@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:40:18 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 03:36:41 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:48:33 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # define PLANE 2
 # define CYLINDER 3
 
-# define E1 "Memory allocation error"
-# define E2 "Not enough arguments"
+# define ERROR_MALLOC "Memory allocation error"
+# define ERROR_NOT_ENOUGH_ARGS "Not enough arguments"
 # define ERROR_WRONG_ARGS_NB "Wrong args numbers"
 # define ERROR_PARSING_ROTATION "Parsing rotation error!"
 # define ERROR_PARSING_CENTER "Parsing center error!"

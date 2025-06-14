@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_pixel_put.c                                    :+:      :+:    :+:   */
+/*   maths_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 15:42:40 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:03:08 by ewiese-m         ###   ########.fr       */
+/*   Created: 2025/05/17 13:48:38 by ewiese-m          #+#    #+#             */
+/*   Updated: 2025/06/14 18:21:28 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	mlx_add_pixels(t_mlx_context *data, int x, int y, int color)
+bool	double_equal(double nb1, double nb2)
 {
-	char	*dst;
+	if (nb1 - nb2 < EPSILON)
+		return (true);
+	return (false);
+}
 
-	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
-	*(unsigned int *)dst = color;
+bool	double_inf(double nb1, double nb2)
+{
+	if (nb1 - nb2 < EPSILON || nb1 - nb2 > -EPSILON)
+		return (true);
+	return (false);
+}
+
+bool	double_sup(double nb1, double nb2)
+{
+	if (nb1 - nb2 > EPSILON || nb1 - nb2 < -EPSILON)
+		return (true);
+	return (false);
 }

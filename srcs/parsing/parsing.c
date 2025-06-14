@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 07:17:07 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 03:02:00 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:29:57 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	ft_parse_line(t_scene *scene, char *line)
+static int	ft_parse_line(t_scene *scene, char *line)
 {
 	if (line[0] == 'A' && line[1] == ' ')
 		return (ft_parse_ambient(scene, line));
@@ -31,7 +31,7 @@ int	ft_parse_line(t_scene *scene, char *line)
 	return (0);
 }
 
-void	ft_set_amblight(t_scene *scene)
+static void	ft_set_amblight(t_scene *scene)
 {
 	t_list	*tmp;
 
@@ -43,7 +43,7 @@ void	ft_set_amblight(t_scene *scene)
 	}
 }
 
-int	check_scene(t_scene *scene)
+static int	check_scene(t_scene *scene)
 {
 	if (!scene->camera)
 		return (ft_error(ERROR_CAMERA_NOT_DEFINED), 0);
@@ -56,7 +56,7 @@ int	check_scene(t_scene *scene)
 	return (1);
 }
 
-char	*ft_remove_newline(char *line)
+static char	*ft_remove_newline(char *line)
 {
 	int	i;
 

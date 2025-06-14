@@ -3,7 +3,16 @@
 		"minirt.h": "c",
 		"libft.h": "c",
 		"math.h": "c",
-		"minirt_tuple.h": "c"
+		"minirt_tuple.h": "c",
+		"minirt_include.h": "c",
+		"checks.h": "c",
+		"definitions.h": "c",
+		"graphics.h": "c",
+		"maths.h": "c",
+		"memory.h": "c",
+		"objects.h": "c",
+		"parsing.h": "c",
+		"structs.h": "c"
 	},
 	"makefile.launchConfigurations": [
 		{

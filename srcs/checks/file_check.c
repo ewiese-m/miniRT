@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_pixel_put.c                                    :+:      :+:    :+:   */
+/*   file_check.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 15:42:40 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:03:08 by ewiese-m         ###   ########.fr       */
+/*   Created: 2025/05/19 15:24:41 by ewiese-m          #+#    #+#             */
+/*   Updated: 2025/06/14 18:57:36 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	mlx_add_pixels(t_mlx_context *data, int x, int y, int color)
+void	file_check_path(char *path)
 {
-	char	*dst;
+	int	fd;
 
-	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
-	*(unsigned int *)dst = color;
+	fd = open(path, O_DIRECTORY);
+	if (fd >= 0)
+		ft_exit("Error: Path is a directory\n", 1);
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		ft_exit("Error: Can't open file\n", 1);
+	if (read(fd, NULL, 0) == -1)
+		ft_exit("Error: Can't read file\n", 1);
+	close(fd);
 }

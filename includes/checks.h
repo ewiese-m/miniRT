@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_pixel_put.c                                    :+:      :+:    :+:   */
+/*   checks.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 15:42:40 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:03:08 by ewiese-m         ###   ########.fr       */
+/*   Created: 2025/06/14 17:07:47 by ewiese-m          #+#    #+#             */
+/*   Updated: 2025/06/14 17:09:21 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#ifndef CHECKS_H
+# define CHECKS_
 
-void	mlx_add_pixels(t_mlx_context *data, int x, int y, int color)
-{
-	char	*dst;
+int		args_check(int argc, char **argv, char **envp);
+void	ext_file_check(char *path);
+void	file_check_path(char *path);
 
-	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
-	*(unsigned int *)dst = color;
-}
+#endif

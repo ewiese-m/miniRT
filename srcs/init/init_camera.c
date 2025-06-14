@@ -1,34 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_comparaisons.c                              :+:      :+:    :+:   */
+/*   init_camera.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/17 13:48:38 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:28 by ewiese-m         ###   ########.fr       */
+/*   Created: 2025/05/19 22:22:04 by ewiese-m          #+#    #+#             */
+/*   Updated: 2025/06/14 15:33:51 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-bool	double_equal(double nb1, double nb2)
+t_camera	*init_camera(void)
 {
-	if (nb1 - nb2 < EPSILON)
-		return (true);
-	return (false);
-}
+	t_camera	*camera;
 
-bool	double_inf(double nb1, double nb2)
-{
-	if (nb1 - nb2 < EPSILON || nb1 - nb2 > -EPSILON)
-		return (true);
-	return (false);
-}
-
-bool	double_sup(double nb1, double nb2)
-{
-	if (nb1 - nb2 > EPSILON || nb1 - nb2 < -EPSILON)
-		return (true);
-	return (false);
+	camera = malloc(sizeof(t_camera));
+	if (!camera)
+		return (NULL);
+	camera->fov = 0;
+	camera->transform = NULL;
+	return (camera);
 }

@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 15:08:57 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 03:06:19 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 18:03:07 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void	render_scene(t_renderer *data)
 		x = data->pxl_rendered % data->mlx->win_width;
 		while (x < data->mlx->win_width)
 		{
-			my_mlx_pixel_put(data->mlx, x, y, get_pixel_color(data, x, y));
+			mlx_add_pixels(data->mlx, x, y, get_pixel_color(data, x, y));
 			x++;
 			data->pxl_rendered++;
 			if (data->pxl_rendered % 10 == 0)

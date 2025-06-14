@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_pixel_put.c                                    :+:      :+:    :+:   */
+/*   objects.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 15:42:40 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:03:08 by ewiese-m         ###   ########.fr       */
+/*   Created: 2025/06/14 18:26:52 by ewiese-m          #+#    #+#             */
+/*   Updated: 2025/06/14 18:27:08 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "miniRT.h"
+#ifndef OBJECTS_H
+#define OBJECTS_H
 
-void	mlx_add_pixels(t_mlx_context *data, int x, int y, int color)
-{
-	char	*dst;
+t_intersection	*create_intersect(double t, t_object *obj);
+t_list			*ft_intersect(t_list *objects, t_ray ray);
+double			*intersect_with_sphere(t_ray ray);
+double			*intersect_with_cylinder(t_object *cy, t_ray ray, double c,
+					double d);
+double			*intersect_with_plane(t_ray ray);
+t_intersection	*ft_hit(t_list *intersections);
 
-	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
-	*(unsigned int *)dst = color;
-}
+#endif

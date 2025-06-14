@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_pixel_put.c                                    :+:      :+:    :+:   */
+/*   init_minirt.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/18 15:42:40 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:03:08 by ewiese-m         ###   ########.fr       */
+/*   Created: 2025/05/21 22:54:17 by ewiese-m          #+#    #+#             */
+/*   Updated: 2025/06/14 17:04:11 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	mlx_add_pixels(t_mlx_context *data, int x, int y, int color)
+int	init_minirt(t_renderer *render)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_length + x * (data->bpp / 8));
-	*(unsigned int *)dst = color;
+	if (!render->scene)
+		return (0);
+	render->scene->camera = NULL;
+	render->scene->ambient = NULL;
+	render->scene->lights = NULL;
+	render->scene->objects = NULL;
+	return (1);
 }
