@@ -13,7 +13,7 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
-# define MATRIX 4
+# define DIMENSION 4
 
 typedef struct s_tuple
 {
@@ -34,7 +34,7 @@ typedef struct s_ray
 
 typedef struct s_matrix
 {
-	double					matrix[MATRIX][MATRIX];
+	double					matrix[DIMENSION][DIMENSION];
 	int						size;
 }							t_matrix;
 

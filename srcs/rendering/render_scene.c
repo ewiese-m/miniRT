@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 15:08:57 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:15:37 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/15 00:05:23 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	x_y_offset[1] = (y + 0.5) * scene->camera->pixel_size;
 	world_x_y[0] = scene->camera->half_width - x_y_offset[0];
 	world_x_y[1] = scene->camera->half_height - x_y_offset[1];
-	pixel = tuple_transform(point_new(world_x_y[0], world_x_y[1], -1),
+	pixel = vector_transform(point_new(world_x_y[0], world_x_y[1], -1),
 			matrix_inverse(*scene->camera->transform));
-	origin = tuple_transform(point_new(0, 0, 0),
+	origin = vector_transform(point_new(0, 0, 0),
 			matrix_inverse(*scene->camera->transform));
-	ray = ray_new(origin, tuple_norm(tuple_sub(pixel, origin)));
+	ray = ray_new(origin, vector_norm(vector_sub(pixel, origin)));
 	return (ray);
 }
 
@@ -38,20 +38,20 @@ t_shading_data	prepare_computations(t_intersection *intersection, t_ray ray)
 
 	comps.object = intersection->obj;
 	comps.point = ft_point_at(ray, intersection->t);
-	comps.eye = tuple_negate(ray.direction);
+	comps.eye = vector_negate(ray.direction);
 	comps.normal = normal_at(comps.object, comps.point);
-	if (tuple_dot(comps.normal, comps.eye) < 0)
+	if (vector_dot(comps.normal, comps.eye) < 0)
 	{
-		comps.normal = tuple_negate(comps.normal);
+		comps.normal = vector_negate(comps.normal);
 		comps.inside = true;
-		comps.over_point = tuple_sub(comps.point,
-				tuple_mult(comps.normal, EPSILON));
+		comps.over_point = vector_sub(comps.point,
+				vector_mult(comps.normal, EPSILON));
 	}
 	else
 	{
 		comps.inside = false;
-		comps.over_point = tuple_add(comps.point,
-				tuple_mult(comps.normal, EPSILON));
+		comps.over_point = vector_add(comps.point,
+				vector_mult(comps.normal, EPSILON));
 	}
 	return (comps);
 }

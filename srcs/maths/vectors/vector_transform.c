@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuple_transform.c                                  :+:      :+:    :+:   */
+/*   vector_transform.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:24:11 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:22:40 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/15 00:06:41 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/miniRT.h"
 
-t_tuple	tuple_transform(t_tuple tuple, t_matrix matrix)
+t_tuple	vector_transform(t_tuple tuple, t_matrix matrix)
 {
 	t_tuple	res;
 
@@ -29,5 +29,5 @@ t_tuple	tuple_transform(t_tuple tuple, t_matrix matrix)
 
 t_point	ft_point_at(t_ray ray, double t)
 {
-	return (tuple_add(ray.origin, tuple_mult(ray.direction, t)));
+	return (vector_add(ray.origin, vector_mult(ray.direction, t)));
 }

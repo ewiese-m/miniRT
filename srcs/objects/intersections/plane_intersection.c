@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 15:59:09 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:23:32 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/15 00:02:53 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ double	*intersect_with_plane(t_ray ray)
 	double	denominator;
 	double	t;
 
-	denominator = tuple_dot(ray.direction, vector_new(0, 1, 0));
+	denominator = vector_dot(ray.direction, vector_new(0, 1, 0));
 	if (fabs(denominator) < EPSILON)
 		return (NULL);
 	t = -ray.origin.y / denominator;

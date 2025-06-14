@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 22:44:39 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:20:41 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:57:45 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ t_matrix	*matrix_mult(t_matrix m1, t_matrix m2)
 	if (!matrix_return)
 		return (NULL);
 	i = 0;
-	while (i < MATRIX)
+	while (i < DIMENSION)
 	{
 		j = 0;
-		while (j < MATRIX)
+		while (j < DIMENSION)
 		{
 			matrix_return->matrix[i][j] = m1.matrix[i][0] * m2.matrix[0][j]
 				+ m1.matrix[i][1] * m2.matrix[1][j]
@@ -42,10 +42,10 @@ t_matrix	*matrix_mult(t_matrix m1, t_matrix m2)
 t_tuple	matrix_tuple_mult(t_matrix m, t_tuple t)
 {
 	int		i;
-	double	result[MATRIX];
+	double	result[DIMENSION];
 
 	i = 0;
-	while (i < MATRIX)
+	while (i < DIMENSION)
 	{
 		result[i] = m.matrix[i][0] * t.x
 			+ m.matrix[i][1] * t.y

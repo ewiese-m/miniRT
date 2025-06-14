@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 22:01:44 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:31:36 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/15 00:03:02 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,10 @@ t_matrix	*view_transform(t_point from, t_vector direction)
 	double		**matrix_values;
 
 	forward = direction;
-	left = tuple_cross(forward, vector_new(0, 1, 0));
+	left = vector_cross(forward, vector_new(0, 1, 0));
 	if (left.x == 0 && left.y == 0 && left.z == 0)
-		left = tuple_cross(forward, vector_new(0, 0, 1));
-	true_up = tuple_cross(left, forward);
+		left = vector_cross(forward, vector_new(0, 0, 1));
+	true_up = vector_cross(left, forward);
 	matrix_values = (double *[]){
 		(double []){left.x, left.y, left.z, 0},
 		(double []){true_up.x, true_up.y, true_up.z, 0},

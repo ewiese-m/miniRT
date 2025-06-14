@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:12:34 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:20:47 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:57:45 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ t_matrix	*matrix_identity(void)
 	if (!matrix_return)
 		return (NULL);
 	i = 0;
-	while (i < MATRIX)
+	while (i < DIMENSION)
 	{
 		j = 0;
-		while (j < MATRIX)
+		while (j < DIMENSION)
 		{
 			if (i == j)
 				matrix_return->matrix[i][j] = 1;
@@ -59,7 +59,7 @@ t_matrix	*matrix_identity(void)
 		}
 		i++;
 	}
-	matrix_return->size = MATRIX;
+	matrix_return->size = DIMENSION;
 	return (matrix_return);
 }
 

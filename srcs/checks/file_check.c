@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:24:41 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:16:05 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:52:11 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,6 @@ void	file_check_path(char *path)
 {
 	int	fd;
 
-	fd = open(path, O_DIRECTORY);
-	if (fd >= 0)
-		ft_exit("Error: Path is a directory\n", 1);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 		ft_exit("Error: Can't open file\n", 1);

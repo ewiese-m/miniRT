@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 14:42:21 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:20:58 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 23:57:45 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ void	ft_matrix_copy(t_matrix *dst, t_matrix *src)
 	int	j;
 
 	i = 0;
-	while (i < MATRIX)
+	while (i < DIMENSION)
 	{
 		j = 0;
-		while (j < MATRIX)
+		while (j < DIMENSION)
 		{
 			dst->matrix[i][j] = src->matrix[i][j];
 			j++;

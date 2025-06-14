@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 21:07:41 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:24:18 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/15 00:02:35 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int	ft_parse_vector(char *line, t_vector *vector)
 	vector->z = ft_atof(tab[2]);
 	vector->w = 0;
 	ft_free_2d_list(tab);
-	if (tuple_mag(*vector) < 1 - EPSILON
-		|| tuple_mag(*vector) > 1 + EPSILON)
+	if (vector_magnitude(*vector) < 1 - EPSILON
+		|| vector_magnitude(*vector) > 1 + EPSILON)
 	{
 		ft_error(ERROR_VECTOR_NORMALIZED);
 		return (0);

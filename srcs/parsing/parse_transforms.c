@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 21:29:51 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:24:18 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/15 00:02:35 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 		return (0);
 	}
 	orientation = vector_new(ft_atof(tab[0]), ft_atof(tab[1]), ft_atof(tab[2]));
-	if (tuple_mag(orientation) < 1 - EPSILON
-		|| tuple_mag(orientation) > 1 + EPSILON)
+	if (vector_magnitude(orientation) < 1 - EPSILON
+		|| vector_magnitude(orientation) > 1 + EPSILON)
 	{
 		ft_free_2d_list(tab);
 		ft_error(ERROR_ORIENTATION_NORMALIZED);
