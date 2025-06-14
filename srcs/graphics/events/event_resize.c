@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 17:53:32 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 00:27:04 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:06:19 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	event_resize(t_minirt *data)
+int	event_resize(t_renderer *data)
 {
 	(void)data;
 	ft_putstr_fd("Resize not implemented yet\n", 2);

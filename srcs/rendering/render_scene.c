@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 15:08:57 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:38 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:06:19 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ t_ray	get_ray(t_scene *scene, int x, int y)
 	return (ray);
 }
 
-t_computation	prepare_computations(t_intersection *intersection, t_ray ray)
+t_shading_data	prepare_computations(t_intersection *intersection, t_ray ray)
 {
-	t_computation	comps;
+	t_shading_data	comps;
 
 	comps.object = intersection->obj;
 	comps.point = ft_point_at(ray, intersection->t);
@@ -56,9 +56,9 @@ t_computation	prepare_computations(t_intersection *intersection, t_ray ray)
 	return (comps);
 }
 
-int	ray_color(t_minirt *data, t_ray ray)
+int	ray_color(t_renderer *data, t_ray ray)
 {
-	t_computation	comps;
+	t_shading_data	comps;
 	t_intersection	*intersection;
 	t_list			*intersections;
 	t_color			color;
@@ -81,7 +81,7 @@ int	ray_color(t_minirt *data, t_ray ray)
 	return (result);
 }
 
-int	get_pixel_color(t_minirt *data, int x, int y)
+int	get_pixel_color(t_renderer *data, int x, int y)
 {
 	t_ray	ray;
 	int		color;
@@ -91,7 +91,7 @@ int	get_pixel_color(t_minirt *data, int x, int y)
 	return (color);
 }
 
-void	render_scene(t_minirt *data)
+void	render_scene(t_renderer *data)
 {
 	int	x;
 	int	y;

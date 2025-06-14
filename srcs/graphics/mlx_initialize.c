@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 14:40:43 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:14:36 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:06:19 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-void	mlx_initialize_win(t_minirt *data)
+void	mlx_initialize_win(t_renderer *data)
 {
 	data->mlx->mlx = NULL;
 	data->mlx->mlx_win = NULL;

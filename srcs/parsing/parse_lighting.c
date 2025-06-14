@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 22:05:20 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:28 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:03:16 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ int	ft_parse_light(t_scene *scene, char *line)
 
 int	ft_parse_ambient(t_scene *scene, char *line)
 {
-	t_ambient	*ambient;
+	t_ambient_light	*ambient;
 	char		**tab;
 
 	if (scene->ambient)
 		return (ft_error(ERROR_AMBIENT_ALREADY_DEFINED), 0);
-	ambient = malloc(sizeof(t_ambient));
+	ambient = malloc(sizeof(t_ambient_light));
 	if (!ambient)
 		return (ft_error(ERROR_MALLOC), 0);
 	tab = ft_split(line, ' ');

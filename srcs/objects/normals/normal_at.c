@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 19:24:12 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:38 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:02:00 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_vector	object_normal_at(t_hittable *obj, t_tuple object_point)
+t_vector	object_normal_at(t_object *obj, t_tuple object_point)
 {
 	t_vector	normal;
 
@@ -32,7 +32,7 @@ t_vector	object_normal_at(t_hittable *obj, t_tuple object_point)
 	return (tuple_norm(normal));
 }
 
-t_vector	normal_at(t_hittable *obj, t_point world_point)
+t_vector	normal_at(t_object *obj, t_point world_point)
 {
 	t_tuple		object_point;
 	t_tuple		object_normal;

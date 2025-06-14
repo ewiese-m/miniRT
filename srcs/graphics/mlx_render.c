@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 15:00:18 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:14:36 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:06:19 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*get_percent(double percent)
 	return (tmp);
 }
 
-int	mlx_render_frame(t_minirt *data)
+int	mlx_render_frame(t_renderer *data)
 {
 	char	*percent;
 

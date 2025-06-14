@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 07:17:07 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 00:26:14 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:02:00 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_set_amblight(t_scene *scene)
 	tmp = scene->objects;
 	while (tmp)
 	{
-		((t_hittable *)tmp->content)->material->ambient = scene->ambient;
+		((t_object *)tmp->content)->material->ambient = scene->ambient;
 		tmp = tmp->next;
 	}
 }

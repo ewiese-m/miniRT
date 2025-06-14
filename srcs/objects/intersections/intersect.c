@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 20:46:09 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:13:18 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:02:00 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_intersection	*create_intersect(double t, t_hittable *obj)
+t_intersection	*create_intersect(double t, t_object *obj)
 {
 	t_intersection	*inter;
 
@@ -24,7 +24,7 @@ t_intersection	*create_intersect(double t, t_hittable *obj)
 	return (inter);
 }
 
-double	*intersect_with(t_hittable *obj, t_ray ray)
+double	*intersect_with(t_object *obj, t_ray ray)
 {
 	t_ray		ray_transformed;
 	t_matrix	invert_transform;
@@ -40,7 +40,7 @@ double	*intersect_with(t_hittable *obj, t_ray ray)
 	return (NULL);
 }
 
-void	add_intersections(t_list **intersections, t_hittable *obj, t_ray ray)
+void	add_intersections(t_list **intersections, t_object *obj, t_ray ray)
 {
 	t_list	*new;
 	double	*inter;
@@ -89,7 +89,7 @@ t_list	*ft_intersect(t_list *objects, t_ray ray)
 {
 	t_list		*intersections;
 	t_list		*tmp;
-	t_hittable	*obj;
+	t_object	*obj;
 
 	intersections = NULL;
 	tmp = objects;

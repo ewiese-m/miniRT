@@ -46,22 +46,22 @@ typedef struct s_shearing
 	double					p2;
 }							t_shearing;
 
-typedef struct s_vars
+typedef struct s_mlx_vars
 {
 	void					*mlx;
 	void					*win;
-}							t_vars;
+}							t_mlx_vars;
 
 typedef struct s_color
 {
-	double					chan_1;
-	double					chan_2;
-	double					chan_3;
+	double					r;
+	double					g;
+	double					b;
 }							t_color;
 
 typedef struct s_material	t_material;
 
-typedef struct s_hittable
+typedef struct s_object
 {
 	int						id;
 	int						type;
@@ -69,7 +69,7 @@ typedef struct s_hittable
 	double					height;
 	t_material				*material;
 	t_matrix				*transform;
-}							t_hittable;
+}							t_object;
 
 typedef struct s_camera
 {
@@ -88,15 +88,15 @@ typedef struct s_light
 	t_color					color;
 }							t_light;
 
-typedef struct s_ambient
+typedef struct s_ambient_light
 {
 	double					brightness;
 	t_color					color;
-}							t_ambient;
+}							t_ambient_light;
 
 typedef struct s_scene
 {
-	t_ambient				*ambient;
+	t_ambient_light			*ambient;
 	t_list					*lights;
 	t_list					*objects;
 	t_camera				*camera;
@@ -105,12 +105,12 @@ typedef struct s_scene
 typedef struct s_intersection
 {
 	double					t;
-	t_hittable				*obj;
+	t_object				*obj;
 }							t_intersection;
 
-typedef struct s_computation
+typedef struct s_shading_data
 {
-	t_hittable				*object;
+	t_object				*object;
 	t_light					*light;
 	t_point					point;
 	t_point					over_point;
@@ -118,17 +118,17 @@ typedef struct s_computation
 	t_vector				normal;
 	t_scene					*scene;
 	bool					inside;
-}							t_computation;
+}							t_shading_data;
 
 typedef struct s_material
 {
 	t_color					color;
-	t_ambient				*ambient;
+	t_ambient_light			*ambient;
 	double					diffuse;
 	double					specular;
 	double					shininess;
 }							t_material;
-typedef struct s_mlx
+typedef struct s_mlx_context
 {
 	void					*mlx;
 	void					*mlx_win;
@@ -141,13 +141,13 @@ typedef struct s_mlx
 	int						line_length;
 	int						endian;
 	int						bpp;
-}							t_mlx;
+}							t_mlx_context;
 
-typedef struct s_minirt
+typedef struct s_renderer
 {
-	t_mlx					*mlx;
+	t_mlx_context			*mlx;
 	t_scene					*scene;
 	unsigned int			pxl_rendered;
-}							t_minirt;
+}							t_renderer;
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 22:54:17 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:45 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:06:19 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-int	init_minirt(t_minirt *minirt)
+int	init_minirt(t_renderer *minirt)
 {
 	if (!minirt->scene)
 		return (0);

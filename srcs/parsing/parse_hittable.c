@@ -6,17 +6,17 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 19:51:55 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:28 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:02:00 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "miniRT.h"
 
-t_hittable	*ft_init_hittable(int id)
+t_object	*ft_init_hittable(int id)
 {
-	t_hittable	*hittable;
+	t_object	*hittable;
 
-	hittable = malloc(sizeof(t_hittable));
+	hittable = malloc(sizeof(t_object));
 	if (!hittable)
 		return (NULL);
 	hittable->type = id;
@@ -37,7 +37,7 @@ t_hittable	*ft_init_hittable(int id)
 
 int	ft_parse_sphere(t_scene *scene, char *line)
 {
-	t_hittable	*sphere;
+	t_object	*sphere;
 	char		**tab;
 	double		diameter;
 
@@ -63,7 +63,7 @@ int	ft_parse_sphere(t_scene *scene, char *line)
 
 int	ft_parse_cylinder(t_scene *scene, char *line)
 {
-	t_hittable	*cylinder;
+	t_object	*cylinder;
 	char		**tab;
 
 	cylinder = ft_init_hittable(CYLINDER);
@@ -91,7 +91,7 @@ int	ft_parse_cylinder(t_scene *scene, char *line)
 
 int	ft_parse_plane(t_scene *scene, char *line)
 {
-	t_hittable	*plane;
+	t_object	*plane;
 	char		**tab;
 
 	plane = ft_init_hittable(PLANE);

@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:19:53 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:28 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:02:53 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ t_color	color_add(t_color c1, t_color c2)
 {
 	t_color	color;
 
-	color.chan_1 = c1.chan_1 + c2.chan_1;
-	color.chan_2 = c1.chan_2 + c2.chan_2;
-	color.chan_3 = c1.chan_3 + c2.chan_3;
+	color.r = c1.r + c2.r;
+	color.g = c1.g + c2.g;
+	color.b = c1.b + c2.b;
 	return (color);
 }
 
@@ -26,9 +26,9 @@ t_color	color_sub(t_color c1, t_color c2)
 {
 	t_color	color;
 
-	color.chan_1 = c1.chan_1 - c2.chan_1;
-	color.chan_2 = c1.chan_2 - c2.chan_2;
-	color.chan_3 = c1.chan_3 - c2.chan_3;
+	color.r = c1.r - c2.r;
+	color.g = c1.g - c2.g;
+	color.b = c1.b - c2.b;
 	return (color);
 }
 
@@ -36,9 +36,9 @@ t_color	color_mult(t_color c1, t_color c2)
 {
 	t_color	color;
 
-	color.chan_1 = c1.chan_1 * c2.chan_1;
-	color.chan_2 = c1.chan_2 * c2.chan_2;
-	color.chan_3 = c1.chan_3 * c2.chan_3;
+	color.r = c1.r * c2.r;
+	color.g = c1.g * c2.g;
+	color.b = c1.b * c2.b;
 	return (color);
 }
 
@@ -46,9 +46,9 @@ t_color	color_scalar(t_color c, double scalar)
 {
 	t_color	color;
 
-	color.chan_1 = c.chan_1 * scalar;
-	color.chan_2 = c.chan_2 * scalar;
-	color.chan_3 = c.chan_3 * scalar;
+	color.r = c.r * scalar;
+	color.g = c.g * scalar;
+	color.b = c.b * scalar;
 	return (color);
 }
 
@@ -58,14 +58,14 @@ int	color_to_int(t_color color)
 	int		g;
 	int		b;
 
-	if (color.chan_1 > 1)
-		color.chan_1 = 1;
-	if (color.chan_2 > 1)
-		color.chan_2 = 1;
-	if (color.chan_3 > 1)
-		color.chan_3 = 1;
-	r = 255 * color.chan_1;
-	g = 255 * color.chan_2;
-	b = 255 * color.chan_3;
+	if (color.r > 1)
+		color.r = 1;
+	if (color.g > 1)
+		color.g = 1;
+	if (color.b > 1)
+		color.b = 1;
+	r = 255 * color.r;
+	g = 255 * color.g;
+	b = 255 * color.b;
 	return (r << 16 | g << 8 | b);
 }

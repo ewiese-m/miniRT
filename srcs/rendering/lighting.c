@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:21:14 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:38 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:03:41 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ bool	is_shadowed(t_scene *scene, t_point point)
 	return (false);
 }
 
-t_color	get_diffuse_and_spec(t_computation	*lighting_info,
+t_color	get_diffuse_and_spec(t_shading_data	*lighting_info,
 	t_vector	lightv, double light_dot_normal)
 {
 	t_color		diffuse;
@@ -62,7 +62,7 @@ t_color	get_diffuse_and_spec(t_computation	*lighting_info,
 	return (color_add(diffuse, specular));
 }
 
-t_color	lighting(t_computation	*lighting_info, bool	shadowed)
+t_color	lighting(t_shading_data	*lighting_info, bool	shadowed)
 {
 	t_color		ambient;
 	t_vector	lightv;

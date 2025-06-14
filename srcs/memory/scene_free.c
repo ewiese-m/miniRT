@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 19:09:03 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:45 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:03:16 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ void	free_light(void *light)
 	free(tmp);
 }
 
-void	free_ambient(t_ambient *ambient)
+void	free_ambient(t_ambient_light *ambient)
 {
 	free(ambient);
 }
 
 void	free_hittable(void *hittable)
 {
-	t_hittable	*tmp;
+	t_object	*tmp;
 
-	tmp = (t_hittable *)hittable;
+	tmp = (t_object *)hittable;
 	if (tmp->material)
 		free(tmp->material);
 	if (tmp->transform)

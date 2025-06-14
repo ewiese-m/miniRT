@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 12:48:54 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/13 21:08:28 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/14 03:02:00 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ t_tuple			tuple_transform(t_tuple tuple, t_matrix matrix);
 
 t_point			ft_point_at(t_ray ray, double t);
 
-t_vector		normal_at(t_hittable *obj, t_point world_point);
+t_vector		normal_at(t_object *obj, t_point world_point);
 t_vector		reflect(t_vector in, t_vector normal);
 
 #endif
