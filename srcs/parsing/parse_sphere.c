@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:59:12 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/17 12:21:03 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:40:31 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,6 @@ static int	parse_sphere_color(t_object *sphere, char **tab)
 	return (1);
 }
 
-static void	add_sphere_to_scene(t_scene *scene, t_object *sphere)
-{
-	ft_lstadd_back(&scene->objects, ft_lstnew(sphere));
-}
-
 int	parse_sphere(t_scene *scene, char *line)
 {
 	t_object	*sphere;
@@ -66,7 +61,7 @@ int	parse_sphere(t_scene *scene, char *line)
 	set_sphere_dimensions(sphere, tab);
 	if (!parse_sphere_color(sphere, tab))
 		return (free_parse_hittable(sphere, tab, SPHERE), 0);
-	add_sphere_to_scene(scene, sphere);
+	ft_lstadd_back(&scene->objects, ft_lstnew(sphere));
 	ft_free_2d_list(tab);
 	return (1);
 }

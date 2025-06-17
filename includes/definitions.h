@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 19:40:18 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/17 03:06:43 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:49:01 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@
 # define SPHERE 1
 # define PLANE 2
 # define CYLINDER 3
+# define E_FOV " Camera FOV must be between 0 and 180 degrees"
 
 #endif

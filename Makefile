@@ -27,8 +27,8 @@ MLX_LIB		:= ${MLX_DIR}/libmlx.a
 
 # ===== COMPILER AND FLAGS =====
 CC			:= cc
-#CFLAGS		:= -Wall -Wextra -Werror -g
-CFLAGS		:= -Wall -Wextra -g
+CFLAGS		:= -Wall -Wextra -Werror -g
+#CFLAGS		:= -Wall -Wextra -g
 DFLAGS		:= -MMD -MF $(@:.o=.d)
 
 # ===== INCLUDE PATHS =====

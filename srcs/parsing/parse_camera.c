@@ -6,15 +6,15 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 22:01:44 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/17 12:21:26 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:50:36 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/miniRT.h"
 
-void	get_pixel_size(t_camera *camera)
+void	ft_get_pixel_size(t_camera *camera)
 {
-	double	aspect_ratio;
+	double		aspect_ratio;
 
 	camera->half_view = tan(camera->fov * M_PI / 360);
 	aspect_ratio = (double)WIDHT / (double)HEIGHT;
@@ -31,7 +31,7 @@ void	get_pixel_size(t_camera *camera)
 	camera->pixel_size = (camera->half_width * 2) / (double)WIDHT;
 }
 
-t_matrix	*obtain_view_transform(t_point from, t_matrix *orientation)
+t_matrix	*ft_get_view_transform(t_point from, t_matrix *orientation)
 {
 	t_matrix	*result;
 	t_matrix	*translation;
@@ -61,16 +61,19 @@ t_matrix	*view_transform(t_point from, t_vector direction)
 	if (left.x == 0 && left.y == 0 && left.z == 0)
 		left = vector_cross(forward, vector_new(0, 0, 1));
 	true_up = vector_cross(left, forward);
-	matrix_values = (double *[]){(double[]){left.x, left.y, left.z, 0},
-		(double[]){true_up.x, true_up.y, true_up.z, 0}, (double[]){-forward.x,
-		-forward.y, -forward.z, 0}, (double[]){0, 0, 0, 1}};
+	matrix_values = (double *[]){
+		(double []){left.x, left.y, left.z, 0},
+		(double []){true_up.x, true_up.y, true_up.z, 0},
+		(double []){-forward.x, -forward.y, -forward.z, 0},
+		(double []){0, 0, 0, 1}
+	};
 	orientation = matrix_new(matrix_values, 4);
 	if (!orientation)
 		return (NULL);
-	return (obtain_view_transform(from, orientation));
+	return (ft_get_view_transform(from, orientation));
 }
 
-int	parse_camera_transform(t_camera *camera, char **tab)
+int	ft_parse_camera_transform(t_camera *camera, char **tab)
 {
 	t_point		*origin;
 	t_vector	*direction;
@@ -111,18 +114,17 @@ int	parse_camera(t_scene *scene, char *line)
 	if (!tab)
 		return (free(camera), ft_error(ERROR_MALLOC), 0);
 	if (ft_tablen(tab) != 4)
-		return (ft_error(ERROR_WRONG_ARGS_NB), free_parse_camera(camera, tab),
-			0);
+		return (ft_error(ERROR_WRONG_ARGS_NB),
+			free_parse_camera(camera, tab), 0);
 	if (!ft_isfloat(tab[3]))
 		return (free_parse_camera(camera, tab), 0);
 	camera->fov = ft_atof(tab[3]);
 	if (camera->fov <= 0 || camera->fov >= 180)
-		return (ft_error("Camera FOV must be between 0 and 180 degrees"),
-			free_parse_camera(camera, tab), 0);
-	if (!parse_camera_transform(camera, tab))
+		return (ft_error(E_FOV), free_parse_camera(camera, tab), 0);
+	if (!ft_parse_camera_transform(camera, tab))
 		return (free_parse_camera(camera, tab), 0);
 	scene->camera = camera;
-	get_pixel_size(camera);
+	ft_get_pixel_size(camera);
 	ft_free_2d_list(tab);
 	return (1);
 }

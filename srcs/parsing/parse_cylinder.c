@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/14 17:54:54 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/17 12:21:39 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:51:48 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,6 @@ static int	parse_cylinder_color(t_object *cylinder, char **tab)
 	return (1);
 }
 
-static void	add_cylinder_to_scene(t_scene *scene, t_object *cylinder)
-{
-	ft_lstadd_back(&scene->objects, ft_lstnew(cylinder));
-}
-
 int	parse_cylinder(t_scene *scene, char *line)
 {
 	t_object	*cylinder;
@@ -68,6 +63,6 @@ int	parse_cylinder(t_scene *scene, char *line)
 	set_cylinder_dimensions(cylinder, tab);
 	if (!parse_cylinder_color(cylinder, tab))
 		return (free_parse_hittable(cylinder, tab, CYLINDER), 0);
-	add_cylinder_to_scene(scene, cylinder);
+	ft_lstadd_back(&scene->objects, ft_lstnew(cylinder));
 	return (ft_free_2d_list(tab), 1);
 }
