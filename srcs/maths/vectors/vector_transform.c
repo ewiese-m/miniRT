@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:24:11 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/15 00:06:41 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/16 11:46:51 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/miniRT.h"
 
-t_tuple	vector_transform(t_tuple tuple, t_matrix matrix)
+t_tuple	transform_vector(t_tuple tuple, t_matrix matrix)
 {
 	t_tuple	res;
 
@@ -25,9 +25,4 @@ t_tuple	vector_transform(t_tuple tuple, t_matrix matrix)
 	res.w = matrix.matrix[3][0] * tuple.x + matrix.matrix[3][1] * tuple.y
 		+ matrix.matrix[3][2] * tuple.z + matrix.matrix[3][3] * tuple.w;
 	return (res);
-}
-
-t_point	ft_point_at(t_ray ray, double t)
-{
-	return (vector_add(ray.origin, vector_mult(ray.direction, t)));
 }

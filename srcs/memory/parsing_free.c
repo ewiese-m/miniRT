@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 22:24:45 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:03:55 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 03:00:48 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_parse_camera(t_camera *camera, char **tab)
 	free_camera(camera);
 	if (tab)
 		ft_free_2d_list(tab);
-	ft_error(ERROR_PARSING_CAMERA);
+	ft_error("Invalid camera parameters");
 }
 
 void	free_parse_hittable(t_object *hittable, char **tab, int id)
@@ -27,11 +27,11 @@ void	free_parse_hittable(t_object *hittable, char **tab, int id)
 	if (tab)
 		ft_free_2d_list(tab);
 	if (id == SPHERE)
-		ft_error(ERROR_PARSING_SPHERE);
+		ft_error("Invalid sphere parameters");
 	else if (id == CYLINDER)
-		ft_error(ERROR_PARSING_CYLINDER);
+		ft_error("Invalid cylinder parameters");
 	else if (id == PLANE)
-		ft_error(ERROR_PARSING_PLANE);
+		ft_error("Invalid plane definition");
 }
 
 void	free_parse_light(t_light *light, char **tab)
@@ -40,7 +40,7 @@ void	free_parse_light(t_light *light, char **tab)
 		free(light);
 	if (tab)
 		ft_free_2d_list(tab);
-	ft_error(ERROR_PARSING_LIGHT);
+	ft_error("Invalid light configuration");
 }
 
 void	free_parse_ambient(t_ambient_light *ambient, char **tab)
@@ -49,5 +49,5 @@ void	free_parse_ambient(t_ambient_light *ambient, char **tab)
 		free(ambient);
 	if (tab)
 		ft_free_2d_list(tab);
-	ft_error(ERROR_PARSING_AMBIENT);
+	ft_error("Invalid ambient light settings");
 }

@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 20:46:09 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:23:32 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/15 11:38:29 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ double	*intersect_with(t_object *obj, t_ray ray)
 	invert_transform = matrix_inverse(*obj->transform);
 	ray_transformed = ray_transform(ray, invert_transform);
 	if (obj->type == SPHERE)
-		return (intersect_with_sphere(ray_transformed));
+		return (sphere_intersect(ray_transformed));
 	else if (obj->type == CYLINDER)
-		return (intersect_with_cylinder(obj, ray_transformed, 0, 0));
+		return (cylinder_intersect(obj, ray_transformed, 0, 0));
 	else if (obj->type == PLANE)
-		return (intersect_with_plane(ray_transformed));
+		return (plane_intersect(ray_transformed));
 	return (NULL);
 }
 

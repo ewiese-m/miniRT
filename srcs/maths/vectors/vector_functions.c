@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuple_functions.c                                  :+:      :+:    :+:   */
+/*   vector_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 20:38:32 by arthur            #+#    #+#             */
-/*   Updated: 2025/06/15 00:04:02 by ewiese-m         ###   ########.fr       */
+/*   Created: 2025/05/28 20:38:32 by ewiese-m        #+#    #+#             */
+/*   Updated: 2025/06/15 11:37:02 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../includes/miniRT.h"
 
-double	vector_magnitude(t_tuple t1)
+double	length(t_tuple t1)
 {
 	return (sqrt(pow(t1.x, 2) + pow(t1.y, 2) + pow(t1.z, 2)));
 }
 
-t_tuple	vector_norm(t_tuple t1)
+t_tuple	normalize(t_tuple t1)
 {
 	double	magnitude;
 
@@ -29,7 +29,7 @@ t_tuple	vector_norm(t_tuple t1)
 	return (t1);
 }
 
-double	vector_dot(t_tuple t1, t_tuple t2)
+double	dot_product(t_tuple t1, t_tuple t2)
 {
 	return (t1.x * t2.x + t1.y * t2.y + t1.z * t2.z);
 }
@@ -42,5 +42,5 @@ t_tuple	vector_cross(t_tuple t1, t_tuple t2)
 
 t_tuple	vector_reflect(t_tuple t, t_tuple normal)
 {
-	return (vector_sub(t, vector_mult(normal, 2 * vector_dot(t, normal))));
+	return (subtract(t, multiply(normal, 2 * dot_product(t, normal))));
 }

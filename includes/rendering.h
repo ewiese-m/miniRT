@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rendering.h                                            :+:      :+:    :+:   */
+/*   rendering.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/14 18:33:22 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 18:33:39 by ewiese-m         ###   ########.fr       */
+/*   Created: 2025/06/16 12:07:54 by ewiese-m          #+#    #+#             */
+/*   Updated: 2025/06/16 12:07:58 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RENDERING_H
 # define RENDERING_H
 
-t_color	color_new(double r, double g, double b);
+t_color	new_color(double r, double g, double b);
 
-t_color	color_add(t_color c1, t_color c2);
-t_color	color_sub(t_color c1, t_color c2);
-t_color	color_mult(t_color c1, t_color c2);
-t_color	color_scalar(t_color c, double scalar);
-int		color_to_int(t_color color);
+t_color	add_colors(t_color c1, t_color c2);
+t_color	sub_colors(t_color c1, t_color c2);
+t_color	mult_colors(t_color c1, t_color c2);
+t_color	scale_color(t_color c, double scalar);
+int		color_to_rgb(t_color color);
 
 t_color	lighting(t_shading_data *lighting_info, bool shadowed);
-bool	is_shadowed(t_scene *scene, t_point point);
-void	render_scene(t_renderer *data);
+bool	in_shadow(t_scene *scene, t_point point);
+void	render(t_renderer *data);
 
 #endif

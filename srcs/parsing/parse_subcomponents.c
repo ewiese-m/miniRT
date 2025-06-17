@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/17 21:07:41 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/15 00:02:35 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 03:02:03 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	ft_parse_point(char *line, t_tuple *tuple)
 		|| !ft_isfloat(tab[1]) || !ft_isfloat(tab[2]))
 	{
 		ft_free_2d_list(tab);
-		ft_error(ERROR_PARSING_POINT);
+		ft_error("Invalid point coordinates");
 		return (0);
 	}
 	tuple->x = ft_atof(tab[0]);
@@ -45,7 +45,7 @@ int	ft_parse_vector(char *line, t_vector *vector)
 		|| !ft_isfloat(tab[1]) || !ft_isfloat(tab[2]))
 	{
 		ft_free_2d_list(tab);
-		ft_error(ERROR_PARSING_VECTOR);
+		ft_error("Invalid vector format");
 		return (0);
 	}
 	vector->x = ft_atof(tab[0]);
@@ -53,16 +53,16 @@ int	ft_parse_vector(char *line, t_vector *vector)
 	vector->z = ft_atof(tab[2]);
 	vector->w = 0;
 	ft_free_2d_list(tab);
-	if (vector_magnitude(*vector) < 1 - EPSILON
-		|| vector_magnitude(*vector) > 1 + EPSILON)
+	if (length(*vector) < 1 - EPSILON
+		|| length(*vector) > 1 + EPSILON)
 	{
-		ft_error(ERROR_VECTOR_NORMALIZED);
+		ft_error("Vector must be normalized");
 		return (0);
 	}
 	return (1);
 }
 
-int	ft_parse_color(char *line, t_color *color)
+int	parse_color(char *line, t_color *color)
 {
 	char	**tab;
 
@@ -73,7 +73,7 @@ int	ft_parse_color(char *line, t_color *color)
 		|| !ft_isint(tab[1]) || !ft_isint(tab[2]))
 	{
 		ft_free_2d_list(tab);
-		ft_error(ERROR_PARSING_COLOR);
+		ft_error("Invalid color values (must be 0-255)");
 		return (0);
 	}
 	color->r = 1 / 255.0 * ft_atoi(tab[0]);
@@ -84,7 +84,7 @@ int	ft_parse_color(char *line, t_color *color)
 		|| color->b < 0 || color->b > 1)
 	{
 		ft_free_2d_list(tab);
-		ft_error(ERROR_PARSING_COLOR);
+		ft_error("Invalid color values (must be 0-255)");
 		return (0);
 	}
 	ft_free_2d_list(tab);

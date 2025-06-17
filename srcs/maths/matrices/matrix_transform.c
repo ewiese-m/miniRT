@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 14:42:21 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:57:45 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/16 12:28:30 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/miniRT.h"
 
-void	ft_matrix_copy(t_matrix *dst, t_matrix *src)
+static void	ft_matrix_copy(t_matrix *dst, t_matrix *src)
 {
 	int	i;
 	int	j;

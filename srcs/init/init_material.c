@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 18:11:31 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:24:18 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/15 11:32:43 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_material	*init_material(void)
 	material = malloc(sizeof(t_material));
 	if (!material)
 		return (NULL);
-	material->color = color_new(255, 255, 255);
+	material->color = new_color(255, 255, 255);
 	material->ambient = NULL;
 	material->diffuse = 0.9;
 	material->specular = 0.9;

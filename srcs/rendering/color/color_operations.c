@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 15:19:53 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:03:48 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/15 11:31:21 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/miniRT.h"
 
-t_color	color_add(t_color c1, t_color c2)
+t_color	add_colors(t_color c1, t_color c2)
 {
 	t_color	color;
 
@@ -22,7 +22,7 @@ t_color	color_add(t_color c1, t_color c2)
 	return (color);
 }
 
-t_color	color_sub(t_color c1, t_color c2)
+t_color	sub_colors(t_color c1, t_color c2)
 {
 	t_color	color;
 
@@ -32,7 +32,7 @@ t_color	color_sub(t_color c1, t_color c2)
 	return (color);
 }
 
-t_color	color_mult(t_color c1, t_color c2)
+t_color	mult_colors(t_color c1, t_color c2)
 {
 	t_color	color;
 
@@ -42,7 +42,7 @@ t_color	color_mult(t_color c1, t_color c2)
 	return (color);
 }
 
-t_color	color_scalar(t_color c, double scalar)
+t_color	scale_color(t_color c, double scalar)
 {
 	t_color	color;
 
@@ -52,7 +52,7 @@ t_color	color_scalar(t_color c, double scalar)
 	return (color);
 }
 
-int	color_to_int(t_color color)
+int	color_to_rgb(t_color color)
 {
 	int		r;
 	int		g;

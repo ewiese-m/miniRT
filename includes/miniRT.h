@@ -6,14 +6,14 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 14:31:24 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/15 00:13:49 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 01:38:53 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include "./../libft/includes/libft.h"
+# include "../libft/libft.h"
 # include "./../minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <limits.h>
@@ -29,8 +29,6 @@
 # include "structs.h"
 /* -- Init -- */
 # include "init.h"
-/* -- Check -- */
-# include "checks.h"
 /* -- Graphics -- */
 # include "graphics.h"
 /* -- Rendering -- */

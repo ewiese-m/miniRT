@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 07:17:07 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:24:18 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 03:04:28 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 static int	ft_parse_line(t_scene *scene, char *line)
 {
 	if (line[0] == 'A' && line[1] == ' ')
-		return (ft_parse_ambient(scene, line));
+		return (parse_enviroment(scene, line));
 	else if (line[0] == 'C' && line[1] == ' ')
-		return (ft_parse_camera(scene, line));
+		return (parse_camera(scene, line));
 	else if (line[0] == 'L' && line[1] == ' ')
-		return (ft_parse_light(scene, line));
+		return (parse_light(scene, line));
 	else if (line[0] == 's' && line[1] == 'p' && line[2] == ' ')
-		return (ft_parse_sphere(scene, line));
+		return (parse_sphere(scene, line));
 	else if (line[0] == 'p' && line[1] == 'l' && line[2] == ' ')
-		return (ft_parse_plane(scene, line));
+		return (parse_plane(scene, line));
 	else if (line[0] == 'c' && line[1] == 'y' && line[2] == ' ')
-		return (ft_parse_cylinder(scene, line));
+		return (parse_cylinder(scene, line));
 	else if (line[0] == '\n' || line[0] == '\0')
 		return (1);
 	return (0);
@@ -46,13 +46,13 @@ static void	ft_set_amblight(t_scene *scene)
 static int	check_scene(t_scene *scene)
 {
 	if (!scene->camera)
-		return (ft_error(ERROR_CAMERA_NOT_DEFINED), 0);
+		return (ft_error("Camera required"), 0);
 	if (!scene->ambient)
-		return (ft_error(ERROR_AMBIENT_NOT_DEFINED), 0);
+		return (ft_error("Ambient light required"), 0);
 	if (!scene->objects)
-		return (ft_error(ERROR_OBJECT_NOT_DEFINED), 0);
+		return (ft_error("At least one object required"), 0);
 	if (!scene->lights)
-		return (ft_error(ERROR_LIGHT_NOT_DEFINED), 0);
+		return (ft_error("Light source required"), 0);
 	return (1);
 }
 

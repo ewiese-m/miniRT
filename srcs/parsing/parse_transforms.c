@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 21:29:51 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/15 00:02:35 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:25:42 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@ void	calculate_rotations(t_vector vector, double *x_angle, double *z_angle)
 {
 	double	ratio;
 
-	ratio = sqrt((vector.x * vector.x) + \
-	(vector.y * vector.y));
+	ratio = sqrt((vector.x * vector.x) + (vector.y * vector.y));
 	if (ratio < EPSILON)
 		*z_angle = M_PI_2;
 	else
@@ -51,19 +50,18 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 	tab = ft_split(line, ',');
 	if (!tab)
 		return (ft_error(ERROR_MALLOC), 0);
-	if (ft_tablen(tab) != 3 || !ft_isfloat(tab[0])
-		|| !ft_isfloat(tab[1]) || !ft_isfloat(tab[2]))
+	if (ft_tablen(tab) != 3 || !ft_isfloat(tab[0]) || !ft_isfloat(tab[1])
+		|| !ft_isfloat(tab[2]))
 	{
 		ft_free_2d_list(tab);
-		ft_error(ERROR_PARSING_ROTATION);
+		ft_error("Invalid rotation values");
 		return (0);
 	}
 	orientation = vector_new(ft_atof(tab[0]), ft_atof(tab[1]), ft_atof(tab[2]));
-	if (vector_magnitude(orientation) < 1 - EPSILON
-		|| vector_magnitude(orientation) > 1 + EPSILON)
+	if (length(orientation) < 1 - EPSILON || length(orientation) > 1 + EPSILON)
 	{
 		ft_free_2d_list(tab);
-		ft_error(ERROR_ORIENTATION_NORMALIZED);
+		ft_error("Orientation vector must be normalized");
 		return (0);
 	}
 	matrix_rotation(transform, orientation);
@@ -72,7 +70,7 @@ int	ft_parse_rotation(char *line, t_matrix *transform)
 }
 
 int	ft_parse_scale(double scale_x, double scale_y, double scale_z,
-	t_matrix *transform)
+		t_matrix *transform)
 {
 	t_matrix	*scale;
 
@@ -87,7 +85,7 @@ int	ft_parse_scale(double scale_x, double scale_y, double scale_z,
 	return (1);
 }
 
-int	ft_parse_translation(char *line, t_matrix *transform)
+int	parse_position(char *line, t_matrix *transform)
 {
 	char		**tab;
 	t_matrix	*translation;
@@ -95,15 +93,15 @@ int	ft_parse_translation(char *line, t_matrix *transform)
 	tab = ft_split(line, ',');
 	if (!tab)
 		return (ft_error(ERROR_MALLOC), 0);
-	if (ft_tablen(tab) != 3 || !ft_isfloat(tab[0])
-		|| !ft_isfloat(tab[1]) || !ft_isfloat(tab[2]))
+	if (ft_tablen(tab) != 3 || !ft_isfloat(tab[0]) || !ft_isfloat(tab[1])
+		|| !ft_isfloat(tab[2]))
 	{
 		ft_free_2d_list(tab);
-		ft_error(ERROR_PARSING_CENTER);
+		ft_error("Invalid center coordinates");
 		return (0);
 	}
-	translation = matrix_translation(ft_atof(tab[0]),
-			ft_atof(tab[1]), ft_atof(tab[2]));
+	translation = matrix_translation(ft_atof(tab[0]), ft_atof(tab[1]),
+			ft_atof(tab[2]));
 	if (!translation)
 	{
 		ft_free_2d_list(tab);

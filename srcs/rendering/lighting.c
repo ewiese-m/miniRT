@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/27 20:21:14 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/15 00:05:23 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/16 13:58:55 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/miniRT.h"
 
-bool	is_shadowed(t_scene *scene, t_point point)
+bool	in_shadow(t_scene *scene, t_point point)
 {
 	t_vector		v;
 	t_vector		direction;
@@ -20,12 +20,12 @@ bool	is_shadowed(t_scene *scene, t_point point)
 	t_list			*intersections;
 	t_intersection	*hit;
 
-	v = vector_sub(((t_light *)scene->lights->content)->position, point);
-	direction = vector_norm(v);
+	v = subtract(((t_light *)scene->lights->content)->position, point);
+	direction = normalize(v);
 	ray = ray_new(point, direction);
 	intersections = ft_intersect(scene->objects, ray);
-	hit = ft_hit(intersections);
-	if (hit != NULL && hit->t < vector_magnitude(v))
+	hit = get_closest_hit(intersections);
+	if (hit != NULL && hit->t < length(v))
 	{
 		ft_lstclear(&intersections, intersec_free);
 		return (true);
@@ -43,23 +43,23 @@ t_color	get_diffuse_and_spec(t_shading_data	*lighting_info,
 	double		reflect_dot_eye;
 	double		factor;
 
-	diffuse = color_mult(lighting_info->object->material->color,
+	diffuse = mult_colors(lighting_info->object->material->color,
 			lighting_info->light->color);
-	diffuse = color_scalar(diffuse, lighting_info->object->material->diffuse
+	diffuse = scale_color(diffuse, lighting_info->object->material->diffuse
 			* light_dot_normal * lighting_info->light->brightness);
-	reflectv = reflect(vector_negate(lightv), lighting_info->normal);
-	reflect_dot_eye = vector_dot(reflectv, lighting_info->eye);
+	reflectv = reflect(negate(lightv), lighting_info->normal);
+	reflect_dot_eye = dot_product(reflectv, lighting_info->eye);
 	if (reflect_dot_eye <= 0)
-		specular = color_new(0, 0, 0);
+		specular = new_color(0, 0, 0);
 	else
 	{
 		factor = pow(reflect_dot_eye,
 				lighting_info->object->material->shininess);
-		specular = color_scalar(lighting_info->light->color,
+		specular = scale_color(lighting_info->light->color,
 				lighting_info->object->material->specular
 				* factor * lighting_info->light->brightness);
 	}
-	return (color_add(diffuse, specular));
+	return (add_colors(diffuse, specular));
 }
 
 t_color	lighting(t_shading_data	*lighting_info, bool	shadowed)
@@ -68,16 +68,16 @@ t_color	lighting(t_shading_data	*lighting_info, bool	shadowed)
 	t_vector	lightv;
 	double		light_dot_normal;
 
-	lightv = vector_norm(vector_sub(lighting_info->light->position,
+	lightv = normalize(subtract(lighting_info->light->position,
 				lighting_info->point));
-	ambient = color_mult(lighting_info->object->material->color,
+	ambient = mult_colors(lighting_info->object->material->color,
 			lighting_info->object->material->ambient->color);
 	if (shadowed)
 		return (ambient);
-	light_dot_normal = vector_dot(lightv, lighting_info->normal);
+	light_dot_normal = dot_product(lightv, lighting_info->normal);
 	if (light_dot_normal < 0 || lighting_info->light->brightness <= 0)
 		return (ambient);
 	else
-		return (color_add(ambient,
+		return (add_colors(ambient,
 				get_diffuse_and_spec(lighting_info, lightv, light_dot_normal)));
 }

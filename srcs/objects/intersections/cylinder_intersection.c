@@ -6,13 +6,13 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/13 21:13:33 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:23:32 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/15 11:38:19 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/miniRT.h"
 
-double	*intersect_with_cylinder(t_object *cy, t_ray ray, double c, double d)
+double	*cylinder_intersect(t_object *cy, t_ray ray, double c, double d)
 {
 	double	*intersections;
 	double	a;

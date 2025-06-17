@@ -6,7 +6,7 @@
 /*   By: ewiese-m <ewiese-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/29 14:34:06 by ewiese-m          #+#    #+#             */
-/*   Updated: 2025/06/14 23:21:43 by ewiese-m         ###   ########.fr       */
+/*   Updated: 2025/06/16 12:27:03 by ewiese-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,25 +46,4 @@ t_matrix	*matrix_rotation_z(double angle)
 	m->matrix[1][0] = sin(angle);
 	m->matrix[1][1] = cos(angle);
 	return (m);
-}
-
-void	ft_fill_rotation_matrix(t_matrix *m, double cos_theta, double sin_theta,
-	t_matrix *skew_sym)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 3)
-	{
-		j = 0;
-		while (j < 3)
-		{
-			m->matrix[i][j] = cos_theta * m->matrix[i][j]
-				+ (1 - cos_theta) * skew_sym->matrix[i][j]
-				+ sin_theta * skew_sym->matrix[i][j];
-			j++;
-		}
-		i++;
-	}
 }
